@@ -153,8 +153,7 @@
 			<h5>Add Product Pictures</h5>
 			<div><small>Support JPG, JPG2000, PNG</small></div>
 			<ng-template *ngFor="let productImg of this.productImgUrl; let i=index;">
-				<!-- <div class="image_area" *ngIf="productImg"> -->
-				<div class="image_area">
+				<div class="image_area" *ngIf="productImg">
 					<img src="{{productImg}}">
 					<a (click)="removeImage(i)">
 						<ion-icon name="trash-outline"></ion-icon>

@@ -69,6 +69,16 @@ ion-content {
     .button {
       text-transform: none;
       letter-spacing: 0;
+
+      &.user__btn {
+        --background: transparent;
+        --padding: 0;
+        --padding-start: 5px;
+        --padding-end: 5px;
+        ion-icon {
+          color: #00c0c9;
+        }
+      }
     }
     h4 {
       margin: 0;
@@ -122,4 +132,10 @@ ion-content {
       }
     }
   }
+}
+.d-flex {
+  display: flex !important;
+}
+.align-items-center {
+  align-items: center !important;
 }

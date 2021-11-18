@@ -84,10 +84,9 @@ export class MenuPage implements OnInit {
 
   getNotificationData(array)
   {
-    if(this.notificationList?.length != array?.length){
-      this.notificationList = array;
-    }
-    console.log('notificatin',this.notificationList);
+    this.notificationList = array;
+    console.log('ntificatin',this.notificationList);
+    
     this.newNotificationCount =  array.filter(function(item) {
       return item.status == true;
     })?.length;
@@ -111,8 +110,6 @@ export class MenuPage implements OnInit {
     this._api.notificationAllClear(this.userInfo._id,true).subscribe(
       res => {
         if(res.error == false && res.message== 'Notification cleared'){
-          this.notificationList = [];
-          this.newNotificationCount = 0;
         }
       }
     )

@@ -188,12 +188,12 @@ ion-content {
     }
   }
   .raise_issue_box {
-    height: 124px;
+    height: auto;
     border-radius: 10px;
     filter: drop-shadow(0px 20px 11.5px rgba(35,49,72,0.82));
     background-color: #53405b;
     width: calc(100% - 60px);
-    margin: 52px auto;
+    margin: 40px auto 25px;
     padding: 23px 17px;
     padding-right: 100px;
     position: relative;

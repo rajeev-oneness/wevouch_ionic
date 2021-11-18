@@ -228,8 +228,8 @@ inoviceslideOpts = {
           if(res.purchaseDate) {
             let purchaseDate = new Date(res.purchaseDate);
             this.warrantyValidTill = purchaseDate.setMonth(purchaseDate.getMonth()+res.warrantyPeriod);
-            console.log('warranty valid till' , this.warrantyLeftDays);
-            console.log('warranty valid tillpurchaseDate ' , res.purchaseDate);
+            this.warrantyValidTill = this.warrantyValidTill-1
+            console.log('warranty valid tillpurchaseDate ' , res.warrantyPeriod);
             console.log('warranty valid till dateNow' , this.warrantyValidTill);
             if (this.dateNow > this.warrantyValidTill) {
               this.warrantyLeftDays = 0;

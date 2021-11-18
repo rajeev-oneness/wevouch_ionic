@@ -137,7 +137,7 @@
     </div>
   </div>
   <div id="datetime" class="content_block" *ngIf="pageid==222">
-    <p>Add the desired date and time for the technician to visit your address</p>
+    <p class="sizeChange">Add the desired date and time for the technician to visit your address</p>
     <ion-item>
         <ion-label position="stacked">Select Date</ion-label>
         <ion-datetime  [min]="date" [max]="maxDate" [(ngModel)]="addTicketValue.selectedDate" value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>

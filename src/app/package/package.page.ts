@@ -157,12 +157,12 @@ goBack() {
                   "transactionAmount" : res.subscription.amount
                 }
                 this._api.addTransaction(formData).subscribe();
-                const notificationForm = {
-                  "title": "Subscription successfully",
-                  "userId": userId,
-                  "description": "Dear "+this.userInfo.name+", you have successfully subscribed to our "+this.packageName+" Plan of "+packageTicket+" tickets yearly. Your plan expires on "+packageExpiry
-                }
-                this._api.addNotification(notificationForm).subscribe();
+                // const notificationForm = {
+                //   "title": "Subscription successfully",
+                //   "userId": userId,
+                //   "description": "Dear "+this.userInfo.name+", you have successfully subscribed to our "+this.packageName+" Plan of "+packageTicket+" tickets yearly. Your plan expires on "+packageExpiry
+                // }
+                // this._api.addNotification(notificationForm).subscribe();
                 const notificationForm2 = {
                   "title": "Subscription Upgraded successfully",
                   "userId": userId,

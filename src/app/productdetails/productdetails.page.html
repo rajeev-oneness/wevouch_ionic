@@ -181,7 +181,8 @@
           <ion-col size="12">
             <h5>Extended Warranty</h5>
           </ion-col>
-          <ion-col size="4" *ngIf="productDeatil.extendedWarranty.extendedWarrantyImages.length !=0">
+          <!-- <ion-col size="4" *ngIf="productDeatil.extendedWarranty.extendedWarrantyImages.length !=0"> -->
+            <ion-col size="4">
             <img src="./assets/images/blank-image.png">
           </ion-col>
           <ion-col size="8">
@@ -190,11 +191,6 @@
                 <h6>Service Provider</h6>
                 <h4>{{productDeatil?.extendedWarranty?.serviceProvider}}</h4>
               </ion-col>
-              <ion-col size="6" *ngIf="productDeatil.extendedWarranty?.mobileNo" class="ion-text-end" (click)="call(productDeatil?.extendedWarranty?.mobileNo)">
-                <a class="call"><ion-icon name="call"></ion-icon></a>
-              </ion-col>
-            </ion-row>
-            <ion-row>
               <ion-col size="6">
                 <h6>Validity</h6>
                 <p *ngIf="productDeatil?.extendedWarranty?.noOfYears > 0 else ExtendedWarrantyNotAvailable">
@@ -204,9 +200,14 @@
                 </p>
                 <ng-template #ExtendedWarrantyNotAvailable>{{'N/A'}}</ng-template>
              </ion-col>
+            </ion-row>
+            <ion-row>
               <ion-col size="6" *ngIf="productDeatil?.extendedWarranty?.mobileNo">
-                <h6>Mobile No.</h6>
-                <p>{{productDeatil?.extendedWarranty?.mobileNo}}</p>
+                  <h6>Mobile No.</h6>
+                  <p>{{productDeatil?.extendedWarranty?.mobileNo}}</p>
+              </ion-col>
+              <ion-col size="6" *ngIf="productDeatil.extendedWarranty?.mobileNo" class="ion-text-end" (click)="call(productDeatil?.extendedWarranty?.mobileNo)">
+                <a class="call"><ion-icon name="call"></ion-icon></a>
               </ion-col>
             </ion-row>
           </ion-col>
@@ -231,19 +232,19 @@
                 <h6>Service Provider</h6>
                 <h4>{{productDeatil?.amcDetails?.serviceProvider}}</h4>
               </ion-col>
-              <ion-col size="6" *ngIf="productDeatil?.amcDetails?.mobileNo" (click)="call(productDeatil?.amcDetails?.mobileNo)" class="ion-text-end">
-                <a class="call"><ion-icon name="call"></ion-icon></a>
-              </ion-col>
-            </ion-row>
-            <ion-row>
               <ion-col size="6">
                 <h6>Valid Till</h6>
                 <p>{{amcValidTill | date: 'dd MMM yyyy'}}</p>
                 <p>{{(amcLeftDays == '')? 'N/A': amcLeftDays}} Days Left</p>
               </ion-col>
+            </ion-row>
+            <ion-row>
               <ion-col size="6" *ngIf="productDeatil?.amcDetails?.mobileNo">
                 <h6>Contact No.</h6>
                 <p>{{productDeatil?.amcDetails?.mobileNo}}</p>
+              </ion-col>
+              <ion-col size="6" *ngIf="productDeatil?.amcDetails?.mobileNo" (click)="call(productDeatil?.amcDetails?.mobileNo)" class="ion-text-end">
+                <a class="call"><ion-icon name="call"></ion-icon></a>
               </ion-col>
             </ion-row>
           </ion-col>

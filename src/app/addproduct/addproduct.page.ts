@@ -18,7 +18,6 @@ import { HelperProvider } from 'src/app/service/helper.service';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import * as moment from 'moment';
-
 @Component({
   selector: 'app-addproduct',
   templateUrl: './addproduct.page.html',

@@ -15,10 +15,12 @@ ion-menu {
 			h4 {
 				margin: 0;
 				color: #fff;
-				margin-left: 20px;
+				margin-left: 0;
+				margin-right: 20px;
 			}
 			.notification_count {
 				display: inline-block;
+				font-size: 11px;
 				width: auto;
 				height: 30px;
 				background: #ed4767;

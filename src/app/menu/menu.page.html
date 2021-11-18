@@ -54,14 +54,17 @@
   </ion-content>
 </ion-menu>
 
-  <ion-router-outlet id="content" main></ion-router-outlet>
+
+
+
+<ion-router-outlet id="content" main></ion-router-outlet>
 
 <ion-menu side="end" contentId="content" menuId="notification">
   <ion-header no-border>
     <div class="notification_header">
       <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg> -->
       <h4>Notifications</h4>
-      <span *ngIf="notificationList?.length > 0" class="notification_count" (click)="clearAllNotification()">Clear All</span>
+      <span class="notification_count" (click)="clearAllNotification()" *ngIf="newNotificationCount>0">Clear All</span>
       <span class="notification_count" *ngIf="newNotificationCount>0">{{newNotificationCount}}</span>
     </div>
   </ion-header>
