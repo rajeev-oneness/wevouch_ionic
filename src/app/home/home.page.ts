@@ -140,10 +140,10 @@ export class HomePage {
           for (let index = 0; index < res.length; index++) {
             if (res[index]?.purchaseDate) {
               let purchaseDate = new Date(res[index].purchaseDate);console.log(' purchaseDate', purchaseDate);
+              purchaseDate.setDate(purchaseDate.getDate()-1);
               res[index].expiresOn = purchaseDate.setMonth(purchaseDate.getMonth()+res[index].warrantyPeriod);
               console.log('res[index].expiresOn', res[index].expiresOn);
               console.log('tday',this.dateNow);
-              
               let warrantyDaysLeft = dateDiffInDays(this.dateNow, res[index].expiresOn);
               var warrantyExpiredDate = new Date(res[index]?.expiresOn).toLocaleDateString("en-us");
               if(warrantyDaysLeft == 30 || warrantyDaysLeft == 3 || warrantyDaysLeft == 0) {

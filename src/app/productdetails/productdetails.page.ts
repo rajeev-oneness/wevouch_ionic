@@ -217,6 +217,7 @@ inoviceslideOpts = {
           console.log('product Details',this.productDeatil);
           console.log('purchaseDate',this.productDeatil.productImagesUrl.length);
           let purchaseDate = new Date(this.productDeatil.purchaseDate);
+          purchaseDate.setDate(purchaseDate.getDate()-1);
           this.expiresOn = purchaseDate.setMonth(purchaseDate.getMonth()+this.productDeatil.purchaseDate.warrantyPeriod);
           console.log('this.expiresOn',this.expiresOn);
           

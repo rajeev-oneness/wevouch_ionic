@@ -69,6 +69,7 @@ ngOnInit(): void {
         for (let index = 0; index < res.length; index++) {
           if (res[index]?.purchaseDate) {
             let purchaseDate = new Date(res[index].purchaseDate);
+            purchaseDate.setDate(purchaseDate.getDate()-1);
             res[index].expiresOn = purchaseDate.setMonth(purchaseDate.getMonth()+res[index].warrantyPeriod);
             let warrantyDaysLeft = dateDiffInDays(this.dateNow, res[index].expiresOn);
             var warrantyExpiredDate = new Date(res[index]?.expiresOn).toLocaleDateString("en-us");
