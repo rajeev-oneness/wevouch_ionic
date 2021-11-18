@@ -31,6 +31,11 @@ export class MenuPage implements OnInit {
       url: '/menu/tabs/tabs/ticket',
       src: '../../assets/images/ticket.svg'
     },
+    {
+      title: 'Change Password',
+      url: '/change-password',
+      src: '../../assets/images/ticket.svg'
+    },
   ]
   public user : any = {}
   public products : any = []

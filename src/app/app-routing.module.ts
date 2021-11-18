@@ -115,6 +115,10 @@ const routes: Routes = [
     path: 'subcategory',
     loadChildren: () => import('./subcategory/subcategory.module').then( m => m.SubcategoryPageModule)
   },
+  {
+    path: 'change-password',
+    loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+  },
 ];
 
 @NgModule({

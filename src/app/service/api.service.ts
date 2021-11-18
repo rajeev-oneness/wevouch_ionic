@@ -102,6 +102,7 @@ userSupport(formData : any){
   updateUserDetails(userId : any, formData : any) {
     return this._http.patch<any>(_apiUrl+'user/update/'+userId, formData);
   }
+  
   changePassword(formData : any) {
     return this._http.post<any>(_apiUrl+'user/change-password', formData);
   }

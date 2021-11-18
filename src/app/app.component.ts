@@ -16,7 +16,7 @@ export class AppComponent {
     public router: Router,
     private alertCtrl: AlertController,
     private _location: Location,) {
-  	this.initializeApp();
+  	// this.initializeApp();
   }
     initializeApp() {
     this.platform.ready().then(() => {
