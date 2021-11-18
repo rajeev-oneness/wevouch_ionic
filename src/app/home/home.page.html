@@ -1,0 +1,92 @@
+<ion-content [fullscreen]="true">
+  <div class="ion-header">
+    <span class="menu_button" (click)="openMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </span>
+    <!-- <ion-img src="../../assets/images/logo.png"></ion-img> -->
+    <img src="../../assets/images/logo.png" class="logo">
+    <span class="notification_button" (click)="openNotification()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+    </span>
+  </div>
+
+  <div class="home_card">
+    <div class="card_content">
+      <h1>Hi <strong>{{user?.name?.split(' ')[0]}}</strong></h1>
+      <small>{{products.length}} Products Listed</small>
+    </div>
+    <div class="profile_image">
+      <!-- <ion-img src="{{user?.image}}"></ion-img> -->
+      <img src="{{user?.image}}" alt="" />
+    </div>
+  </div>
+
+  <h4 *ngIf="products.length != 0">Products ({{products.length}})</h4>
+  <ng-template [ngIf]="products.length > 0" [ngIfElse]="emptyProduct">
+    <ion-slides class="product_slider" pager="false" [options]="productslideOpts" >
+      <ion-slide *ngFor="let product of products">
+        <div class="slide" >
+          <div class="addproductbox" (click)="openproductdetails(product._id)">
+            <span *ngIf="!product?.expiresOn || product?.expiresOn<dateNow">Out of Warranty</span>
+            <!-- <ion-img src="{{(product.productImagesUrl != '')? product.productImagesUrl[0] : './assets/images/blank-image.png'}}"></ion-img> -->
+            <img src="{{(product.productImagesUrl != '')? product.productImagesUrl[0] : './assets/images/blank-image.png'}}">
+            <h5>{{product.name}}</h5>
+            <small *ngIf="product?.expiresOn && product?.expiresOn>dateNow">Expires on {{product.expiresOn | date:'MMM dd, yyyy'}}</small>
+            <!-- <ng-template #expireMessage>Expired ago {{product.expiresOn | date:'MMM dd, yyyy'}}</ng-template> -->
+            <small *ngIf="product?.expiresOn && product?.expiresOn<dateNow">Expired {{calculateDiff(product?.expiresOn)}}_days ago</small>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          <div class="addanotherproductbox" routerLink="/menu/tabs/tabs/addproduct">
+            <a class="addproductbutton"  routerDirection="root">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </a>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </ng-template>
+  
+
+<ng-template #emptyProduct>
+  <div class="empty_product_box" *ngIf="this.products.length == 0 && productCatShow">
+    <!-- <ion-img width="129" height="174" src="../../assets/images/empty_product.png"></ion-img> -->
+    <img src="../../assets/images/empty_product.png">
+    <h4>Add Products</h4>
+    <h5>to start managing your warranties effectively!</h5>
+  </div>
+</ng-template>
+
+  <div class="raise_issue_box" (click)="raiseIssue()">
+    <div class="raise_content">
+      <h5>Facing an issue with your product?</h5>
+      <p>Raise a service request, we'll follow up for you</p>
+      <a>Raise Ticket</a>
+    </div>
+    <!-- <ion-img src="../../assets/images/issue_image.png"></ion-img> -->
+    <img src="../../assets/images/issue_image.png">
+  </div>
+
+  <h4>Offers</h4>
+  <ion-slides class="offers_slider" pager="false" [options]="offerslideOpts">
+    <ion-slide>
+      <div class="offer_box yellow" routerLink="/package">
+        <!-- <ion-img src="../../assets/icon/wevouch-icon.png"></ion-img> -->
+        <img src="../../assets/icon/wevouch-icon.png">
+        <div class="">
+          <h4>Upgrade to<br/>Premium</h4>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="offer_box">
+        <div>
+          <h4>Get a Free Ticket!</h4>
+          <a href="#">Add 5 Products</a>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

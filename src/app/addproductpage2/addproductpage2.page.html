@@ -1,0 +1,88 @@
+<ion-content>
+	<div class="ion-header">
+		<span class="back_button">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+		</span>
+		<h4>Add Products</h4>
+		<span class="cross_button">
+			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+		</span>
+	</div>
+
+	<div id="product" class="content_block">
+		<ion-item>
+	  		<ion-label position="stacked">Nick Name</ion-label>
+	  		<ion-input type="text"></ion-input>
+		</ion-item>
+		<ion-item>
+    		<ion-label position="stacked">Brand</ion-label>
+    		<ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select Brand">
+      			<ion-select-option value="red">Red</ion-select-option>
+				<ion-select-option value="purple">Purple</ion-select-option>
+				<ion-select-option value="yellow">Yellow</ion-select-option>
+				<ion-select-option value="orange">Orange</ion-select-option>
+				<ion-select-option value="green">Green</ion-select-option>
+    		</ion-select>
+  		</ion-item>
+		<ion-item>
+	  		<ion-label position="stacked">Category</ion-label>
+	  		<ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select Category">
+      			<ion-select-option value="red">Red</ion-select-option>
+				<ion-select-option value="purple">Purple</ion-select-option>
+				<ion-select-option value="yellow">Yellow</ion-select-option>
+				<ion-select-option value="orange">Orange</ion-select-option>
+				<ion-select-option value="green">Green</ion-select-option>
+    		</ion-select>
+		</ion-item>
+		<ion-item>
+	  		<ion-label position="stacked">Sub-category</ion-label>
+	  		<ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select Sub-category">
+      			<ion-select-option value="red">Red</ion-select-option>
+				<ion-select-option value="purple">Purple</ion-select-option>
+				<ion-select-option value="yellow">Yellow</ion-select-option>
+				<ion-select-option value="orange">Orange</ion-select-option>
+				<ion-select-option value="green">Green</ion-select-option>
+    		</ion-select>
+		</ion-item>
+		<ion-item>
+	  		<ion-label position="stacked">Registered MObile No.</ion-label>
+	  		<ion-input type="tel"></ion-input>
+		</ion-item>
+		<ion-button expand="block" routerLink="/register" routerDirection="root" color="ocean"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e3d56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Add Product</ion-button>
+	</div>
+
+
+	<div id="warranty" class="content_block">
+		<div class="invoice_header ion-text-center">
+			<h5>Add Product Pictures</h5>
+			<div><small>Support JPG, JPG2000, PNG</small></div>
+			<div class="button_area">
+				<a href="#" class="invoice_btn">
+					<span class="btn_area">
+						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+					</span>
+				</a>
+			</div>
+			<div class="image_area">
+				<img src="../../assets/images/television.jpeg">
+			</div>
+		</div>
+
+		<!-- <div class="upload_area">
+			
+		</div> -->
+
+		<ion-grid class="button_group">
+	  		<ion-row>
+	  			<ion-col size="5">
+	  				<ion-button expand="block" routerLink="/register" routerDirection="root" color="ocean">Skip</ion-button>
+	  			</ion-col>
+	  			<ion-col size="7">
+	  				<ion-button expand="block" routerLink="/register" routerDirection="root" color="ocean">Continue  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></ion-button>
+	  			</ion-col>
+  			</ion-row>
+  		</ion-grid>
+	</div>
+
+
+</ion-content>

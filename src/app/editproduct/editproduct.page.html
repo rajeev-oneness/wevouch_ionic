@@ -1,0 +1,181 @@
+<ion-content>
+	<div class="ion-header">
+		<span class="back_button" (click)="goBack()">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+		</span>
+		<h4>Edit Product</h4>
+		<span class="cross_button" (click)="cross()">
+			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+		</span>
+	</div>
+	
+	<div class="progress-bar-container">
+		<ul class="progress_bar">
+			<li id="f-child-none" class="active" *ngIf="pageid==0"><span>Product</span></li>
+		<li class="complete" *ngIf="pageid==0"><span>Warranty</span></li>
+		<li class="complete" *ngIf="pageid==0"><span>Finish</span></li>
+
+		<li id="f-child-none" class="active" *ngIf="pageid==111"><span>Product</span></li>
+		<li class="active" *ngIf="pageid==111"><span>Warranty</span></li>
+		<li class="complete" *ngIf="pageid==111"><span>Finish</span></li>
+
+		<li id="f-child-none" class="active" *ngIf="pageid==222"><span>Product</span></li>
+		<li class="active" *ngIf="pageid==222"><span>Warranty</span></li>
+		<li class="active" *ngIf="pageid==222"><span>Finish</span></li>
+		</ul>
+	</div>
+
+	<div id="product" class="content_block" *ngIf="pageid==0">
+		<ion-item>
+	  		<ion-label position="stacked">Product Nickname</ion-label>
+	  		<ion-input type="text" [(ngModel)]="name"></ion-input>
+		</ion-item>
+
+		<div class="select_box">
+			<ion-label position="stacked">Brand</ion-label>
+			<ng-select [items]="brandList" bindLabel="name" bindValue="id" [placeholder]="(brandId != '' ? '' : 'Select Brand')" [(ngModel)]="brandId"  (change)="fetchCategory(2)" name="brandId"></ng-select>
+		</div>
+
+		<ion-item *ngIf="brandId == 'Others' || brandId == '0'">
+			<ion-label position="stacked">Please enter brand name</ion-label>
+			<ion-input [(ngModel)]="otherBrand" placeholder="Brand Name"></ion-input>
+		</ion-item>
+
+		<div class="select_box">
+			<ion-label position="stacked">Category</ion-label>
+			<ng-select [items]="categoriesList" bindLabel="category" bindValue="category" [placeholder]="(category != '' ? '' : 'Select Category')" [(ngModel)]="category"  (change)="fetchSubCategory(2)" name="category"></ng-select>
+		</div>
+
+		<ion-item *ngIf="category == 'Others'">
+			<ion-label position="stacked">Please enter category</ion-label>
+			<ion-input [(ngModel)]="otherCategory" placeholder="Category Name"></ion-input>
+		</ion-item>
+
+		<div class="select_box">
+			<ion-label position="stacked">Sub-category</ion-label>
+			<ng-select [items]="subCategoriesList" bindLabel="sub_category" bindValue="sub_category" [placeholder]="(subCategory != '' ? '' : 'Select Sub-category')" [(ngModel)]="subCategory"  (change)="fetchModel(2)" name="subCategory"></ng-select>
+		</div>
+
+		<ion-item *ngIf="subCategory == 'Others'">
+			<ion-label position="stacked">Please enter sub-category</ion-label>
+			<ion-input [(ngModel)]="otherSubCategory" placeholder="Sub-Category Name"></ion-input>
+		</ion-item>
+
+		<ion-item class="mobile">
+	  		<ion-label position="stacked">Registered Mobile No</ion-label>
+	  		<ion-input type="tel" [(ngModel)]="userPhn"></ion-input>
+	  		<ion-icon slot="end" name="pencil"></ion-icon>
+		</ion-item>
+
+		<ion-button expand="block" (click)="productPage2('111')" routerDirection="root" color="ocean"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e3d56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Edit Product</ion-button>
+	</div>
+	<div id="warranty" class="content_block" *ngIf="pageid==111">
+		<div class="invoice_header ion-text-center">
+			<h5>Upload Invoice Photo</h5>
+			<div><small>Received on the day of purchase</small></div>
+			<div class="button_area" (click)="selectImageOption()">
+				<a class="invoice_btn">
+					<span class="btn_area">
+						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+					</span>
+				</a>
+			</div>
+
+			<div class="image_area" *ngFor="let productImg of this.invoiceImgUrl; let i=index;">
+				<img src="{{productImg}}">
+				<a (click)="removeInvoiceImage(i)">
+					<ion-icon name="trash-outline"></ion-icon>
+				</a>
+			</div>
+			<div><small>Support JPG, JPG2000, PNG</small></div>
+		</div>
+		<ion-item class="international_warranty">
+		    <ion-label>Out of Warranty</ion-label>
+		    <ion-checkbox slot="start" [checked]="myVar1" (ionChange)="myVar1 = !myVar1" (click)="remember()"></ion-checkbox>
+		</ion-item>
+		<ion-item *ngIf="sectionHide==1">
+	  		<ion-label position="stacked">Purchase Date </ion-label>
+	  		<ion-datetime displayFormat="DD MMM YYYY" (ionChange)="setDate()" [(ngModel)]="purchaseDate"></ion-datetime>
+		</ion-item>
+		<ion-item *ngIf="sectionHide==1">
+	  		<ion-label position="stacked">Warranty Period</ion-label>
+	  		<ion-grid>
+		  		<ion-row>
+		  			<ion-col size="6">
+		  				<ion-input type="number" [(ngModel)]="warrantyPeriod"></ion-input>
+		  			</ion-col>
+		  			<ion-col size="6">
+		  				<ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder=""  [(ngModel)]="year">
+			      			<ion-select-option value="year">Year</ion-select-option>
+							<ion-select-option value="month">Month</ion-select-option>
+			    		</ion-select>
+		  			</ion-col>
+	  			</ion-row>
+	  		</ion-grid>
+		</ion-item>
+		<ion-item>
+	  		<ion-label position="stacked">Serial No</ion-label>
+	  		<ion-input type="text" [(ngModel)]="serialNo"></ion-input>
+		</ion-item>
+				<div class="select_box">
+		<ion-label position="stacked">Model No</ion-label>
+		<ng-select [items]="modelList" bindLabel="model_no" bindValue="model_no" [placeholder]="(modelId != '' ? '' : 'Select Model No.')" [(ngModel)]="modelId" (change)="fetchModel()" name="modelId"></ng-select>
+		</div>
+
+		<ion-item *ngIf="modelId=='Others'">
+	  		<ion-label position="stacked">Please enter Model No</ion-label>
+	  		<ion-input type="text" [(ngModel)]="otherModel"></ion-input>
+		</ion-item>
+		
+		<ion-item class="international_warranty">
+		    <ion-label>International Warranty</ion-label>
+		    <ion-checkbox slot="start"></ion-checkbox>
+		</ion-item>
+
+		<div class="warranty_button" (click)="openextended();">
+			<span class="add_icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span><span>Add Extended Warranty Details</span>
+		</div>
+
+		<div class="warranty_button" (click)="openamc();">
+			<span class="add_icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span><span>Add AMC Details</span>
+		</div>
+
+		<small>Enter full details to receive warranty reminders!</small>
+
+		<ion-grid class="button_group">
+	  		<ion-row>
+	  			<ion-col size="12">
+	  				<ion-button expand="block" (click)="productPage3('222')"routerDirection="root" color="ocean">Continue  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></ion-button>
+	  			</ion-col>
+  			</ion-row>
+  		</ion-grid>
+	</div>
+	
+	<div id="warranty" class="content_block" *ngIf="pageid==222">
+		<div class="invoice_header ion-text-center">
+			<h5>Add Product Pictures</h5>
+			<div><small>Support JPG, JPG2000, PNG</small></div>
+			<div class="image_area" *ngFor="let productImg of this.productImgUrl; let i=index;">
+				<img src="{{productImg}}">
+				<a (click)="removeImage(i)">
+									<ion-icon name="trash-outline"></ion-icon>
+								</a>
+			</div>
+			<div class="button_area" (click)="selectImageOption2()">
+				<a class="invoice_btn">
+					<span class="btn_area">
+						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+					</span>
+				</a>
+			</div>
+		</div>
+
+		<ion-grid class="button_group">
+	  		<ion-row>
+	  			<ion-col size="12" (click)="addFinish()">
+	  				<ion-button expand="block" routerDirection="root" color="ocean">Continue  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></ion-button>
+	  			</ion-col>
+  			</ion-row>
+  		</ion-grid>
+	</div>
+</ion-content>

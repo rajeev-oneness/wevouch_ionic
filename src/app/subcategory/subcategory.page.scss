@@ -1,0 +1,53 @@
+ion-content {
+	--background: #2e3d56 url(../../assets/images/bg_curv.png) top center no-repeat;
+	--color: #fff;
+	--padding-bottom: 90px;
+
+	.ion-header {
+		display: flex;
+		padding: 0 30px;
+		margin: 65px auto;
+		align-items:center;
+		justify-content: space-between;
+
+		.logo {
+			display: block;
+		}
+		.back_button {
+			display: flex;
+			width: 36px;
+			height: 36px;
+			border-radius: 18px;
+			background-color: #202c40;
+			align-items:center;
+			justify-content: center;
+		}
+		.cross_button {
+			display: flex;
+			width: 36px;
+			height: 36px;
+			border-radius: 18px;
+			background-color: #202c40;
+			align-items:center;
+			justify-content: center;
+		}
+		h4 {
+			margin: 0;
+			color: #fff;
+			font-size: 18px;
+		}
+	}
+
+	ion-searchbar {
+		--background: #202c40;
+		--border-radius: 10px;
+	}
+	ion-list {
+		background: transparent;
+
+		ion-item {
+			--background: transparent;
+			--color: #fff;
+		}
+	}
+}

@@ -1,0 +1,300 @@
+ion-content {
+  --background: #2e3d56 url(../../assets/images/bg_wave.png) top center no-repeat;
+  --color: #fff;
+
+  .ion-header {
+    display: flex;
+    padding: 0 30px;
+    margin: 65px auto 30px;
+    align-items:center;
+    justify-content: space-between;
+
+    .logo {
+      display: block;
+    }
+    .menu_button {
+      display: flex;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      background-color: #202c40;
+      align-items:center;
+      justify-content: center;
+
+      svg {
+        max-width: 20px;
+        max-height: 20px;
+      }
+    }
+    .notification_button {
+      display: flex;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      background-color: #202c40;
+      align-items:center;
+      justify-content: center;
+
+      svg {
+        max-width: 20px;
+        max-height: 20px;
+      } 
+
+    }
+  }
+  .ticlet_wrap {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto;
+
+    .ticket_box {
+      width: 100%;
+      border-radius: 40px;
+      border: 2px dashed #00C0C9;
+      -webkit-mask-image: url(../../assets/images/ticket_mask.png);
+      -webkit-mask-size: 100% auto;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: bottom center;
+
+      .ticket_box_top {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        padding: 15px 26px;
+        background: #fff;
+        border-radius: 38px 38px 0 0;
+        border-bottom: 2px dashed #00C0C9;
+        position: relative;
+
+        &:before {
+          position: absolute;
+          width: 51px;
+          height: 50px;
+          border-radius: 50%;
+          border: 2px dashed #00C0C9;
+          bottom: -31px;
+          left: -30px;
+          content: '';
+        }
+        &:after {
+          position: absolute;
+          width: 51px;
+          height: 50px;
+          border-radius: 50%;
+          border: 2px dashed #00C0C9;
+          bottom: -31px;
+          right: -30px;
+          content: '';
+        }
+
+        .product_image {
+          margin-right: 15px;
+
+          img {
+            max-width: 80px;
+            height: 80px;
+            object-fit: contain;
+          }
+        }
+        h5 {
+          font-size: 16px;
+          letter-spacing: 0px;
+          color: #2e3d56;
+          font-weight: 500;
+          margin: 8px 0 0;
+        }
+        span {
+          font-size: 12px;
+          color: #8e93bc;
+          font-weight: 400;
+        }
+        a {
+          color: #000;
+          font-size: 12px;
+          text-decoration: underline;
+        }
+        p {
+          font-size: 12px;
+          color: #2e3d56;
+          margin: 5px 0;
+
+          &.details {
+            color: #8e93bc;
+            span {
+              font-size: 12px;
+              color: #000;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+      .ticket_box_bottom {
+        padding: 20px 40px 28px;
+        background: #fff;
+        border-radius: 0 0 38px 38px;
+        text-align: center;
+        height: 105px;
+
+        h4 {
+          font-size: 24px;
+          letter-spacing: 0px;
+          color: #2e3d56;
+          font-weight: 500;
+          margin: 10px 0 0;
+        }
+        small {
+          font-size: 14px;
+          color: #2e3d56;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .log_list {
+    margin: 20px auto;
+    padding: 0 15px;
+    max-width: 300px;
+    list-style-type: none;
+
+    li {
+      display: block;
+      padding-left: 35px;
+      position: relative;
+      padding-bottom: 30px;
+
+      span.mile_stone {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        background: #5d7193;
+        z-index:2;
+      }
+
+      &:after {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 10.5px;
+        border-right: 2px dashed #5d7193;
+        content: '';
+      }
+
+      p {
+        margin: 0;
+        opacity: 0.2;
+      }
+      &.complete {
+        p {
+          opacity: 1;
+        }
+      }
+      &.complete:after {
+        border-color: #00C0C9;
+      }
+      &.complete {
+
+        span.mile_stone {
+          background: #00C0C9;
+        }
+      }
+
+      &:last-child:after {
+        display: none;
+      }
+      &.ongoing {
+        p {
+          opacity: 1;
+        }
+      }
+      &.ongoing {
+
+        span.mile_stone{
+          width: 14px;
+          height: 14px;
+          background: #00C0C9;
+          left: 6px;
+
+          &:before {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #00C0C9;
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+          }
+          &:after {
+            display: block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid #00C0C9;
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+          }
+        }
+      }
+      .timeline_box {
+        display: block;
+        max-width: 300px;
+        border-radius: 5px;
+        filter: drop-shadow(0px 3px 3.5px rgba(35,49,72,0.3));
+        background-color: #202c40;
+        border: 2px dashed #5d7193;
+        margin: 0 auto 15px;
+        padding: 18px;
+        margin-top: 10px;
+
+        h5 {
+          color: rgba(255,255,255,0.5);
+          margin: 0 0 6px;
+          font-size: 16px;
+        }
+        p {
+          margin-bottom: 10px;
+        }
+        h4 {
+          margin: 0;
+          font-size: 20px;
+          font-weight: 400;
+        }
+        ion-chip {
+          border-radius: 5px;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 22px;
+          height: 36px;
+          padding: 7px 16px;
+          margin: 0 10px 0 0;
+
+          &.yes {
+            --background: #00C0C9;
+            --color: #202c40;
+          }
+          &.no {
+            --background: #ed4767;
+            --color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+.no-tickit{
+  text-align: center;
+  margin-top: 25px;
+}

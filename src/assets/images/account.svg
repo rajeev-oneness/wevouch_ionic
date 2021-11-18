@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30">
+	<title>account</title>
+	<defs>
+		<image width="29" height="28" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcCAYAAACdz7SqAAAAAXNSR0IArs4c6QAAAidJREFUSEvtlU1y2kAUhPvNEBPF/M0J7BvEN7C8yBqOQE5gVeUA4AOkCq+zCKusshAnQL5BjmCfYEDg4B/NvNQIlOAELBFwXKnybKXRN93T/UR4hkXPwMQL9Eld/7/s1Xp2qJR3+TeWbKx0Mpn5DHQA+AAiAs6qVS/aBF4Yugxj5hHAA4CaRNTYFJ4LdTbKEj4D7DNjBOZza+96SqmR1rohxF4AotMMbhK8z7M9F5oqZAxdoxn4YpPkk1LVB3am8FK5Q6CAgJM8u4tBwUMAX5nxjojqzLgkwoMQMagBtkeCaFdQDA3gq6p3EcfTNiBaANxdLq8GCG8JTwBdl1I9mR3LeZp3r/TfQtm2VG1/sBYaXzcliXAnSqfT6ZFlEQFpgPrWoKuUd5XBtZ4dCIkuEdoAjwVZv1KpfHtsWOSm122eV+J1QODgJ5zQF4x2BmNQzyY3aX/zplMh6C9VcziYP4CoAuYpiD4WhWXfKQR1SiH3jkVaFW4tpk/6jflIpNDChjB3F1sp1VofClFuEsEHkeulA4wBDgkcGXMfSfnKZ5APkDtIfXGKkBmRtbcDpdTKv9BapePxdZeE6DDzFQihTUyYjb/FHZ/a5OY8U6b1xBcl2QLDHeCArT2r1/e7q+43F1qren+84wCyVBqaJDn5fQ47SDyZ8QvUObHW3tRCKYNa7U0aouXlQiZluW/MbXtVWOL4e2iM6a2y/lFoXsG3eV6op9sAVu39AbXVUSwPKohRAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Black" href="#img1" transform="matrix(1,0,0,1,0,1)"/>
+</svg>

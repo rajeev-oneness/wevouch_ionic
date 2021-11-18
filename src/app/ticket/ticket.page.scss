@@ -1,0 +1,209 @@
+ion-content {
+  --background: #2e3d56 url(../../assets/images/bg_wave.png) top center no-repeat;
+  --color: #fff;
+  --padding-bottom: 90px;
+
+  .ion-header {
+    display: flex;
+    padding: 0 30px;
+    margin: 65px auto 30px;
+    align-items:center;
+    justify-content: space-between;
+
+    .logo {
+      display: block;
+    }
+    .menu_button {
+      display: flex;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      background-color: #202c40;
+      align-items:center;
+      justify-content: center;
+
+      svg {
+        max-width: 20px;
+        max-height: 20px;
+      }
+    }
+    .notification_button {
+      display: flex;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      background-color: #202c40;
+      align-items:center;
+      justify-content: center;
+
+      svg {
+        max-width: 20px;
+        max-height: 20px;
+      } 
+
+    }
+  }
+  .home_card {
+    display: flex;
+    border-radius: 20px;
+    filter: drop-shadow(0px 20px 11.5px #233148);
+    background: #435574 url(../../assets/images/home_bg.png) center right -13px no-repeat;
+    padding: 25px;
+    width: calc(100% - 60px);
+    margin: 0 auto;
+    align-items:center;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 22px;
+      font-weight: 400;
+      margin: 0;
+
+      strong {
+        font-weight: 500;
+      }
+    }
+    small {
+      font-size: 11px;
+      color: #f2f3f7;
+      font-weight: 400;
+    }
+
+    .profile_image {
+      display: block;
+      width: 35px;
+      height: 35px;
+      border-radius: 18px;
+      border: 1px solid #ffffff;
+    }
+  }
+  .empty_product_box {
+  	display: block;
+  	width: 100%;
+  	padding: 50px 30px;
+  	text-align: center;
+
+  	h4 {
+  		margin-bottom: 0;
+  	}
+  	h5 {
+  		margin: 0;
+  	}
+
+  	&:after {
+  		display: block;
+  		width: 127px;
+  		height: 132px;
+  		background: url(../../assets/images/product_arrow.png) center no-repeat;
+  		margin: 43px auto 0;
+  		content: '';
+  	}
+  }
+  .empty_product_box + h4 {
+    margin: 35px 0 20px;
+    padding: 0 30px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .ticket_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    margin-bottom: 30px;
+
+    h4 {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+  .ticket_slider {
+    padding-left: 30px;
+    margin-bottom: 50px;
+
+    .ticket_box {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 40px;
+      border: 2px dashed #00C0C9;
+      -webkit-mask-image: url(../../assets/images/ticket_mask.png);
+      -webkit-mask-size: 100% auto;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: bottom center;
+
+      .ticket_box_top {
+        padding: 40px 28px;
+        background: #fff;
+        border-radius: 38px 38px 0 0;
+        border-bottom: 2px dashed #00C0C9;
+        position: relative;
+        height: 235px;
+
+        &:before {
+          position: absolute;
+          width: 51px;
+          height: 51px;
+          border-radius: 50%;
+          border: 2px dashed #00C0C9;
+          bottom: -29px;
+          left: -30px;
+          content: '';
+        }
+        &:after {
+          position: absolute;
+          width: 51px;
+          height: 51px;
+          border-radius: 50%;
+          border: 2px dashed #00C0C9;
+          bottom: -29px;
+          right: -30px;
+          content: '';
+        }
+
+        img {
+          max-width: 120px;
+        }
+        h5 {
+          font-size: 16px;
+          letter-spacing: 0px;
+          color: #2e3d56;
+          font-weight: 500;
+          margin: 8px 0 0;
+        }
+        small {
+          font-size: 13px;
+          color: #8e93bc;
+          font-weight: 400;
+        }
+      }
+      .ticket_box_bottom {
+        padding: 20px 40px 28px;
+        background: #fff;
+        border-radius: 0 0 38px 38px;
+        height: 105px;
+
+        h4 {
+          font-size: 24px;
+          letter-spacing: 0px;
+          color: #2e3d56;
+          font-weight: 500;
+          margin: 7px 0 0;
+        }
+        small {
+          font-size: 14px;
+          color: #2e3d56;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+.swiper-slide img{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}

@@ -1,0 +1,69 @@
+<ion-content>
+  <div class="ion-header">
+    <h4>Add Extended Warranty</h4>
+    <span class="cross_button" (click)="dismiss()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </span>
+  </div>
+  <div id="product" class="content_block">
+    <div class="invoice_header ion-text-center">
+			<h5>Upload Extended Warranty Photo</h5>
+			<div class="image_area" *ngFor="let img of this.extendedWarrantyImages; let i=index;">
+				<img src="{{img}}">
+				<a (click)="removeExtendedImage(i)">
+					<ion-icon name="trash-outline"></ion-icon>
+				</a>
+			</div>
+			<div class="button_area" (click)="selectImageOption()">
+				<a class="invoice_btn">
+					<span class="btn_area">
+						<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+					</span>
+				</a>
+			</div>
+			<div><small>Support JPG, JPG2000, PNG</small></div>
+		</div>
+    <ion-item>
+        <ion-label position="stacked">Service Provider</ion-label>
+        <ion-input type="text" [(ngModel)]="serviceProvider"></ion-input>
+    </ion-item>
+    <ion-grid class="button_group">
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Start Date</ion-label>
+            <ion-datetime displayFormat="DD MMM YYYY" (ionChange)="setDate()" [(ngModel)]="startDate"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Warranty Period</ion-label>
+            <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select" [(ngModel)]="noOfYears">
+              <ion-select-option value="1">1 year</ion-select-option>
+              <ion-select-option value="2">2 years</ion-select-option>
+              <ion-select-option value="3">3 years</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item>
+        <ion-label position="stacked">Vendor's Contact No.</ion-label>
+        <ion-input type="number"
+                id="mobileNo"
+                [(ngModel)]="mobileNo"
+                placeholder="+91"
+                class="form-control"
+                name="mobileNo" 
+                [ngClass]="{'is-invalid':mobileNo?.invalid && mobileNo?.touched}" 
+                pattern="(?=.*\d).{10}" 
+                required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Please enter Policy Number</ion-label>
+      <ion-input type="text" [(ngModel)]="policyNumber"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="dismiss()" routerDirection="root" color="ocean"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e3d56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Add Details</ion-button>
+  </div>
+</ion-content>

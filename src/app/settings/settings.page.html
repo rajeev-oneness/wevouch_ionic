@@ -1,0 +1,57 @@
+<ion-content>
+  <div class="ion-header" (click)="goBack()">
+    <span class="back_button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </span>
+    <img src="../../assets/images/logo.png" class="logo">
+    <span class="cross_button"></span>
+  </div>
+
+  <div class="setting_box">
+    <ion-item-divider>
+      Notifications
+    </ion-item-divider>
+    <ion-item>
+      <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+      <ion-label>Whatsapp</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="userSettings.isWhatsappNotification" (ionChange)="updateUserSetting()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="mail-unread-outline"></ion-icon>
+      <ion-label>Email</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="userSettings.isEmailNotification" (ionChange)="updateUserSetting()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="chatbox-ellipses-outline"></ion-icon>
+      <ion-label>SMS</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="userSettings.isSMSNotification" (ionChange)="updateUserSetting()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="notifications-outline"></ion-icon>
+      <ion-label>In App</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="userSettings.isInAppNotification" (ionChange)="updateUserSetting()"></ion-toggle>
+    </ion-item>
+  </div>
+
+  <div class="setting_box">
+    <ion-item-divider>
+      Preferences
+    </ion-item-divider>
+    <ion-item>
+      <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+      <ion-label>Email Newsletter</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="userSettings.isEmailNewsLetter" (ionChange)="updateUserSetting()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="logo-facebook"></ion-icon>
+      <ion-label>Connect Facebook</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="userSettings.isConnectFb" (ionChange)="updateUserSetting()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+      <ion-label>2 Factor Authentication</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="userSettings.isTwoFactorAuth" (ionChange)="updateUserSetting()"></ion-toggle>
+    </ion-item>
+  </div>
+
+</ion-content>

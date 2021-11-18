@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true">
+  <div class="ion-header">
+    <span class="menu_button" (click)="openMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </span>
+    <img src="../../assets/images/logo.png" class="logo">
+    <span class="notification_button" (click)="openNotification()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+    </span>
+  </div>
+
+  	<div class="ticket_header">
+  		<div class="">
+			<h4>Tickets Raised</h4>
+			<p>Remaining tickets: {{user.remainingTicketCount}}</p>
+		</div>
+		<ion-button expand="block" routerLink="/menu/tabs/tabs/products" routerDirection="root" color="ocean">Raise Ticket</ion-button>
+	</div>
+	
+  <ion-slides class="ticket_slider" pager="false" [options]="ticketslideOpts">
+    <ion-slide *ngFor="let ticket of tickets">
+	    <div class="ticket_box" *ngIf="ticket.products; else noProductBlock" (click)="ticketDetails(ticket._id)">
+	    	<div class="ticket_box_top">
+				<img src="{{(ticket.products.productImagesUrl != '')? ticket.products.productImagesUrl[0] : './assets/images/blank-image.png'}}" >
+				<h5>{{ticket?.products.name || 'N/A'}}</h5>
+				<small>Issued On : {{ticket.createdAt | date:'dd MMM, yyyy'}}</small>
+			</div>
+		  	<div class="ticket_box_bottom">
+				<small>Your wevouch ticket no.</small>
+				<h4>{{ticket.uniqueId}}</h4>
+		  	</div>
+	    </div>
+    </ion-slide>
+    <!-- <ion-slide>
+	    <div class="ticket_box">
+	    	<div class="ticket_box_top">
+				<img src="../../assets/images/television.jpeg">
+				<h5>LG OLED TV</h5>
+				<small>Expires on 14 March 2024</small>
+		  	</div>
+		  	<div class="ticket_box_bottom">
+				<small>Your wevouch ticket no.</small>
+				<h4>WV108309</h4>
+		  	</div>
+	    </div>
+    </ion-slide> -->
+  </ion-slides>
+
+
+</ion-content>

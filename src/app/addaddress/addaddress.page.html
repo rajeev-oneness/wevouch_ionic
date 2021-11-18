@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="ion-header">
+    <!-- <span class="back_button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </span> -->
+    <h4>{{button_name}}</h4>
+    <span class="cross_button" (click)="dismiss()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </span>
+  </div>
+
+  <div class="content_block">
+    <ion-item>
+        <ion-label position="stacked" >Address Line 1</ion-label>
+        <ion-input type="text" [(ngModel)]="userAddress.addressLine1" ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked" >Address Line 2</ion-label>
+        <ion-input type="email" [(ngModel)]="userAddress.addressLine2"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked" >Location</ion-label>
+        <ion-input type="text" [(ngModel)]="userAddress.location"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked" >City</ion-label>
+        <ion-input type="text" [(ngModel)]="userAddress.city"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked" >State</ion-label>
+        <ion-input type="text" [(ngModel)]="userAddress.state"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked" >Country</ion-label>
+        <ion-input type="text" [(ngModel)]="userAddress.country"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked" >Pin</ion-label>
+        <ion-input type="tel" [(ngModel)]="userAddress.pin" maxlength="7" minlength="7"></ion-input>
+    </ion-item>
+  </div>
+  <div class="content_block">
+    <ion-button expand="block" color="ocean" (click)="editAddress()" *ngIf="addressId != ''">Save Address</ion-button>
+    <ion-button expand="block" color="ocean" (click)="addaddress()" *ngIf="addressId == ''">Add Address</ion-button>
+  </div>
+
+
+</ion-content>

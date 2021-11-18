@@ -1,0 +1,31 @@
+<ion-content>
+  <ion-slides pager="true" #mySlider [options]="slideOpts">
+    <ion-slide>
+      <div class="slide">
+        <img src="../../assets/images/Splash screen 1.png">
+        <div class="button_area">
+          <a routerLink="/forgotpassword" routerDirection="root">Skip</a>
+          <a class="login" (click)="swipeNext()">Next</a>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide">
+        <img src="../../assets/images/Splash screen 2.jpg">
+        <div class="button_area">
+          <a routerLink="/forgotpassword" routerDirection="root">Skip</a>
+          <a class="login" (click)="swipeNext()">Next</a>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide">
+        <img src="../../assets/images/Splash screen 3.jpg">
+        <div class="button_area">
+          <a routerLink="/register" routerDirection="root">Register</a>
+          <a routerLink="/forgotpassword" routerDirection="root" class="login">Login</a>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

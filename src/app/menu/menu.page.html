@@ -1,0 +1,91 @@
+<ion-menu side="start" contentId="content" menuId="content">
+  <ion-header no-border></ion-header>
+  <ion-content>
+    <div class="profile_area">
+      <figure class="profile_image">
+        <img src="{{user?.image}}">
+      </figure>
+      <figcaption>
+        <h4><h4>{{user?.name}}</h4></h4>
+      </figcaption>
+    </div>
+
+    <div class="main_menu">
+      <div *ngFor="let p of pages">
+        <ion-item routerDirection="root" [routerLink]="p.url" routerLinkActive="active" menuClose>
+          <ion-avatar slot="start">
+            <ion-img [src]="p.src"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            {{ p.title }}
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+
+    <div class="cms_menu">
+      <ion-item>
+        <ion-label >
+          FAQs
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label routerLink="/menu/tabs/tabs/support">
+          Support
+        </ion-label>
+      </ion-item>
+      <ion-item routerLink="/settings" routerDirection="root">
+        <ion-label>
+          Settings
+        </ion-label>
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-label>
+          Log Out
+        </ion-label>
+      </ion-item>
+    </div>
+
+    <div class="footer_menu">
+      <p><a (click)="openlink('https://wevouch.in/privacy-policy/')">Privacy Policy</a> <a (click)="openlink('https://wevouch.in/terms-condition/')">Terms And Conditions</a></p>
+      <small>© wevouch 2021. All rights reserved</small>
+    </div>
+
+  </ion-content>
+</ion-menu>
+
+  <ion-router-outlet id="content" main></ion-router-outlet>
+
+<ion-menu side="end" contentId="content" menuId="notification">
+  <ion-header no-border>
+    <div class="notification_header">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg> -->
+      <h4>Notifications</h4>
+      <span *ngIf="notificationList?.length > 0" class="notification_count" (click)="clearAllNotification()">Clear All</span>
+      <span class="notification_count" *ngIf="newNotificationCount>0">{{newNotificationCount}}</span>
+    </div>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let notification of notificationList" >
+        <!-- New Notification Section -->
+        <ion-label *ngIf="notification.status else oldNotification" (click)="markingNotificationAsRead(notification._id)" class="newNotification">
+          <h6>{{notification.title}} <span>{{notification.createdDate| date:'d/M/yyyy'}}</span></h6>
+          <p>{{notification.description}}</p>
+        </ion-label>
+        <!-- old Notifiaction Section -->
+        <ng-template #oldNotification>
+          <ion-label class="notificationViewd">
+            <h6>{{notification.title}}  {{notification.createdDate| date:'dd MMM yyyy'}}</h6>
+            <p>{{notification.description}}</p>
+          </ion-label>
+        </ng-template>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer *ngIf="newNotificationCount > 0">
+    <ion-toolbar>
+      <p><a href="javascript:void(0)" (click)="markingNotificationAsRead()">Mark all as read</a></p>
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>

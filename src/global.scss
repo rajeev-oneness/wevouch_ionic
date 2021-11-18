@@ -1,0 +1,208 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+//@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  // --ion-font-family: 'Rubik', sans-serif;
+  --ion-font-family: 'Poppins', sans-serif;
+}
+
+.ion-color-ocean {
+  --ion-color-base: var(--ion-color-ocean);
+  --ion-color-base-rgb: var(--ion-color-ocean-rgb);
+  --ion-color-contrast: var(--ion-color-ocean-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-ocean-contrast-rgb);
+  --ion-color-shade: var(--ion-color-ocean-shade);
+  --ion-color-tint: var(--ion-color-ocean-tint);
+}
+.ion-color-megenta {
+  --ion-color-base: var(--ion-color-megenta);
+  --ion-color-base-rgb: var(--ion-color-megenta-rgb);
+  --ion-color-contrast: var(--ion-color-megenta-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-megenta-contrast-rgb);
+  --ion-color-shade: var(--ion-color-megenta-shade);
+  --ion-color-tint: var(--ion-color-megenta-tint);
+}
+.ion-color-ash {
+  --ion-color-base: var(--ion-color-ash);
+  --ion-color-base-rgb: var(--ion-color-ash-rgb);
+  --ion-color-contrast: var(--ion-color-ash-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-ash-contrast-rgb);
+  --ion-color-shade: var(--ion-color-ash-shade);
+  --ion-color-tint: var(--ion-color-ash-tint);
+}
+.button {
+  filter: drop-shadow(0px 20px 11.5px rgba(35,49,72,0.75));
+  --box-shadow: none;
+  height: 50px;
+  font-size: 16px;
+  --border-radius: 10px;
+  margin: 0;
+}
+
+.half-modal .modal-wrapper {
+   height: 80%;
+   top: 20%;
+   position: absolute; 
+   display: block;
+   border-radius: 20px 20px 0 0;
+   border-top: 4px solid #00C0C9;
+}
+.action-sheet-group {
+  --background: rgba(67,85,116,0.8); 
+  --color: #00C0C9;
+  --background-selected: #f00;
+  backdrop-filter: blur(3px);
+
+  &:first-child {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .action-sheet-selected {
+    .action-sheet-button-inner {
+      color: #00C0C9;
+    }
+  }
+
+  .action-sheet-button-inner {
+    color: #fff;
+  }
+}
+ion-datetime {
+  background: #202c40 url(/assets/icon/date.png) center right 10px no-repeat !important;
+}
+.picker-wrapper {
+  --background: rgba(67,85,116,0.8);
+  backdrop-filter: blur(3px);
+  --border-radius: 15px 15px 0 0;
+  color: #fff; 
+
+  .picker-opt.picker-opt-selected {
+    color: #00C0C9;   
+  }
+  .picker-toolbar-button.picker-toolbar-cancel {
+    .picker-button {
+      color: #ed4767;
+    }
+  }
+  .picker-toolbar-button {
+    .picker-button {
+      color: #00C0C9;
+    }
+  }
+}
+ng-otp-input {
+  width: 100%;
+
+  .wrapper {
+    display: flex;
+  }
+}
+.otp-input {
+  max-width: calc((100% - 24px) / 4);
+  height: 50px !important;
+  border-radius: 10px !important;
+  background: #202c40;
+  border: none !important;
+  flex: 0 0 100%;
+  color: #fff;
+  --color: #fff;
+
+  &:focus {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  &:focus-visible {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+ion-alert {
+  backdrop-filter: blur(3px);
+
+  .alert-wrapper {
+    --background: rgba(67,85,116,0.8);
+
+    .alert-title {
+      color: #fff;
+      font-size: 15px;
+    }
+    .alert-message {
+      font-size: 14px;
+      color: #8e93bc;
+    }
+    .alert-button {
+      color: #00C0C9;
+    }
+    .alert-button.alert-button-role-cancel {
+      color: #ed4767;
+    }
+  }
+}
+
+.item-has-focus {
+  ion-label.label-stacked {
+    color: #00C0C9 !important;
+  }
+}
+.ng-select {
+  margin-bottom: 22px;
+
+  .ng-select-container {
+    background: #202c40;
+    padding: 15px;
+    border-radius: 10px;
+    line-height: 20px;
+
+    .ng-value-container .ng-input>input {
+      padding: 0 15px !important;
+    }
+  }
+}
+
+.ng-dropdown-panel {
+  background: rgba(67,85,116,0.8); 
+  color: #00C0C9;
+  backdrop-filter: blur(3px);
+
+  .ng-option {
+    padding: 15px 20px;
+  }
+}
+
+ion-img {
+  img {
+    max-width: 100%;
+  }
+}
+
+// img {
+//   max-width: 100%;
+//   width: auto !important;
+// }

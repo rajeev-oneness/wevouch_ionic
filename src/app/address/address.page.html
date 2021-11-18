@@ -1,0 +1,47 @@
+<ion-content>
+  <div class="ion-header" (click)="goBack()">
+    <span class="back_button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </span>
+   <h4 *ngIf="userAddresses.length > 0; else noAddressBlock">Manage Address</h4>
+     <span class="cross_button" (click)="dismiss()" style="visibility: hidden;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </span>
+  </div>
+
+  <div class="content_block">
+    <!-- <ion-radio-group [(ngModel)]="genderId" multiple="false" (ionChange)='onChangeHandler($event);'> -->
+      <ion-item class="address" *ngFor="let address of userAddresses">
+                <!-- <ion-radio slot="start" value="{{address.id}}" checked></ion-radio> -->
+
+        <ion-label>
+          <h5>{{address.addressLine1}}</h5>
+          <p>{{address.addressLine2}}</p>
+          <p>{{address.location}}</p>
+          <p>{{address.city}}, {{address.state}}, {{address.country}}</p>
+          <p>pin - {{address.pin}}</p>
+
+          <div class="ion-text-end">
+            <ion-button fill="clear" size="small" (click)="editAddress(address?._id)">
+              <ion-icon slot="icon-only" name="pencil"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small"  (click)="delteAddress(address?._id)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-label>
+      </ion-item>
+    <!-- </ion-radio-group> -->
+    <ion-button expand="block" (click)="addAddress()" color="ocean" class="mb-20">Add New Address</ion-button>
+  </div>
+  <ng-template #noAddressBlock>
+    <section class="account-details">
+        <div class="upgradePlanBox mt-2 position-relative">
+            <div class="upgradePlanBoxtxt">
+                <h4>No address found !</h4>
+            </div>
+        </div>
+        <button class="submit-btn addressBTN" routerLink="/address/add">+ Add Address</button>
+    </section>
+</ng-template>
+</ion-content>

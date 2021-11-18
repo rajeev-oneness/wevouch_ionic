@@ -1,0 +1,28 @@
+<ion-content>
+    <div class="ion-header" (click)="goBack()">
+      <span class="back_button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      </span>
+      <img src="../../assets/images/logo.png" class="logo">
+      <span class="cross_button"></span>
+    </div>
+  <div id="issue" class="content_block">
+    <ion-item>
+         <ion-label position="stacked">Name</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+    <ion-item>
+         <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Subject</ion-label>
+        <ion-input type="text" [(ngModel)]="subject"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-textarea type="text" [(ngModel)]="description"></ion-textarea>
+    </ion-item>
+    <ion-button (click)="sendSupport()"  expand="block"  routerDirection="root" color="ocean"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e3d56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Submit</ion-button>
+  </div>
+</ion-content>

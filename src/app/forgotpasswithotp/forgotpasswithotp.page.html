@@ -1,0 +1,23 @@
+<ion-content>
+  <img src="../../assets/images/logo.png" class="logo">
+
+  <h4>Verify Mail</h4>
+
+  <div class="content_block">
+    <ion-item>
+        <ion-label position="stacked">OTP</ion-label>
+        <ion-input type="text" class="form-control" tabindex="2" [(ngModel)]="otp"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">New Password</ion-label>
+        <ion-input type="password"  placeholder="Password" required [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="resetPassword()" routerDirection="root" color="ocean">Submit</ion-button>
+  </div>
+  <div class="content_block">
+    
+<!--     <p class="ion-text-center">Don't received the code? <a href="#" class="signup">Resend</a></p> -->
+  </div>
+
+
+</ion-content>

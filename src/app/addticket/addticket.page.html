@@ -1,0 +1,166 @@
+<ion-content>
+  <div class="ion-header">
+<!--     <span class="back_button" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </span> -->
+    <h4>Add Ticket</h4>
+    <span class="cross_button" (click)="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </span>
+  </div>
+  <div class="progress-bar-container">
+		<ul class="progress_bar">
+			<li id="f-child-none" class="active" *ngIf="pageid==0"><span>Product</span></li>
+    <li class="complete" *ngIf="pageid==0"><span>Warranty</span></li>
+    <li class="complete" *ngIf="pageid==0"><span>Finish</span></li>
+
+    <li id="f-child-none" class="active" *ngIf="pageid==111"><span>Product</span></li>
+    <li class="active" *ngIf="pageid==111"><span>Warranty</span></li>
+    <li class="complete" *ngIf="pageid==111"><span>Finish</span></li>
+
+    <li id="f-child-none" class="active" *ngIf="pageid==222"><span>Product</span></li>
+    <li class="active" *ngIf="pageid==222"><span>Warranty</span></li>
+    <li class="active" *ngIf="pageid==222"><span>Finish</span></li>
+		</ul>
+	</div>
+  <!-- <ul class="form_wizard">
+    <li class="complete"></li>
+    <li class="complete"></li>
+    <li class="active"></li>
+  </ul> -->
+  <div id="issue" class="content_block" *ngIf="pageid==0">
+    <ion-item>
+        <!-- <ion-label position="stacked">Issue Details</ion-label> -->
+        <ion-label position="stacked">Add the issue you are facing with your product in details</ion-label>
+        <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select" [(ngModel)]="addTicketValue.issueType">
+              <ion-select-option value="Repair" selected>Breakage</ion-select-option>
+              <ion-select-option value="Manufacturer">Malfunctioning</ion-select-option>
+            </ion-select>
+      </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Function Details</ion-label>
+        <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select" [(ngModel)]="addTicketValue.functionType">
+              <ion-select-option value="Not Functioning" selected>Not Functioning</ion-select-option>
+              <ion-select-option value="Functioning">Functioning</ion-select-option>
+            </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-textarea type="text" [(ngModel)]="addTicketValue.description"></ion-textarea>
+    </ion-item>
+    <ion-button (click)="raiseTicket('111')"  expand="block"  routerDirection="root" color="ocean"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e3d56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Raise Ticket</ion-button>
+  </div>
+  <div id="servicetype" class="content_block" *ngIf="pageid==111">
+    <div class="service_typebox">
+      <div *ngIf="pageStatus == 'carryin'" class="service_block active" (click)="carryin('carryin')">
+        <img src="../../assets/icon/carryin.png">
+        <div>Carry In</div>
+      </div>
+      <div *ngIf="pageStatus == 'carryin'" class="service_block" (click)="pickup('pickup')">
+        <img src="../../assets/icon/pickup.png">
+        <div>Pickup</div>
+      </div>
+      <div *ngIf="pageStatus == 'carryin'" class="service_block " (click)="onsite('onsite')">
+        <img src="../../assets/icon/onsite.png">
+        <div>Onsite</div>
+      </div>
+
+      <div *ngIf="pageStatus == 'pickup'" class="service_block" (click)="carryin('carryin')">
+        <img src="../../assets/icon/carryin.png">
+        <div>Carry In</div>
+      </div>
+      <div *ngIf="pageStatus == 'pickup'" class="service_block active" (click)="pickup('pickup')">
+        <img src="../../assets/icon/pickup.png">
+        <div>Pickup</div>
+      </div>
+      <div *ngIf="pageStatus == 'pickup'" class="service_block" (click)="onsite('onsite')">
+        <img src="../../assets/icon/onsite.png">
+        <div>Onsite</div>
+      </div>
+
+      <div  *ngIf="pageStatus == 'onsite'" class="service_block" (click)="carryin('carryin')">
+        <img src="../../assets/icon/carryin.png">
+        <div>Carry In</div>
+      </div>
+      <div *ngIf="pageStatus == 'onsite'" class="service_block" (click)="pickup('pickup')">
+        <img src="../../assets/icon/pickup.png">
+        <div>Pickup</div>
+      </div>
+      <div *ngIf="pageStatus == 'onsite'" class="service_block active" (click)="onsite('onsite')">
+        <img src="../../assets/icon/onsite.png">
+        <div>Onsite</div>
+      </div>
+    </div>
+
+    <div id="carryin" *ngIf="pageStatus == 'carryin'">
+      <ion-item>
+
+        <ion-label position="stacked">Select City</ion-label>
+        <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select City" multiple="false" [(ngModel)]="selectedCity" (ionChange)="selectCity();">
+            <ion-select-option *ngFor="let city of cityData" [value]="city.name">{{city.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+<!--       <ion-radio-group  multiple="false" [(ngModel)]="addTicketValue.addressId" (ionChange)='onChangeHandler($event);'> -->
+        <ion-item class="address" *ngFor="let serviceCenter of serviceCenters">
+          <ion-label>
+            <h5>{{serviceCenter.name}}</h5>
+            <p>{{serviceCenter.address}}</p>
+            <p>Phone: {{serviceCenter.phone}}</p>
+            <p *ngIf="serviceCenter.email">email: {{serviceCenter.email}}</p>
+          </ion-label>
+          <!-- <ion-radio slot="start" name="addressId" value="{{serviceCenter.id}}" checked></ion-radio> -->
+        </ion-item>
+      <!-- </ion-radio-group> -->
+     <!--  <ion-button expand="block" (click)="raiseTicket2('222','Carry In')" routerDirection="root" color="ocean" class="mb-20" disabled >Coming Soon</ion-button> -->
+    </div>
+    <div id="pickup" *ngIf="pageStatus == 'pickup'">
+      <ion-button expand="block" routerDirection="root" disabled color="ocean">Coming Soon</ion-button>
+    </div>
+    <div id="onsite" *ngIf="pageStatus == 'onsite'">
+      <ion-radio-group *ngFor="let address of userAddresses" multiple="false" [(ngModel)]="addTicketValue.addressId" (ionChange)='onChangeHandler($event);'>
+        <ion-item class="address">
+          <ion-label>
+            <h5>{{address.addressLine1}}</h5>
+            <p>{{address.addressLine2}}</p>
+            <p>{{address.city}}, {{address.state}}, {{address.country}}</p>
+            <p>pin - {{address.pin}}</p>
+          </ion-label>
+          <ion-radio slot="start" name="addressId" value="{{address._id}}" checked></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+
+      <ion-button expand="block" (click)="openaddaddress();" color="ocean" class="mb-20">Add Address</ion-button>
+
+      <ion-button expand="block" (click)="raiseTicket2('222','On Site')"  routerDirection="root" color="ocean">Raise Ticket  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></ion-button>
+
+      
+    </div>
+  </div>
+  <div id="datetime" class="content_block" *ngIf="pageid==222">
+    <p>Add the desired date and time for the technician to visit your address</p>
+    <ion-item>
+        <ion-label position="stacked">Select Date</ion-label>
+        <ion-datetime  [min]="date" [max]="maxDate" [(ngModel)]="addTicketValue.selectedDate" value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Select Time</ion-label>
+        <ion-datetime [hourValues]="hourValues" [min]="minTime" [max]="maxTime" displayFormat="HH:mm" pickerFormat="HH:mm A" [(ngModel)]="addTicketValue.selectedTime" ></ion-datetime>
+    </ion-item>
+    <ion-button expand="block" (click)="raiseTicket3('333')" routerDirection="root" color="ocean">Raise Ticket  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></ion-button>
+  </div>
+  <div class="ticket_block" *ngIf="pageid==333">
+    <div class="ticket_box">
+      <div class="ticket_box_top">
+        <img src="../../assets/icon/complete.png">
+        <h5>Service request raised!<br/><span>We’ll reach you shortly.</span></h5>
+        <small>Disclaimer: Subject to the availability of Service Provider* </small>
+      </div>
+      <div class="ticket_box_bottom">
+        <h4>{{addedTicketDetail.uniqueId}}</h4>
+        <small><a href="#" routerLink="/menu/tabs/tabs/ticket" routerDirection="root">Go To Tickets</a></small>
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30">
+	<title>ticket</title>
+	<defs>
+		<image width="28" height="28" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAY1JREFUSEvtlkFOwkAUht/rdAEFp8wJ4AbADfQGkngAjqAnYDiB3kDdm+jSndwAvAGeYGgt6KIzzxQoKVJJSibVGLprMnnf/P/887cIJT9YMg+OQOuOb1mqlGqBW2lapcQ6EKI+SWdugGEY9QHZrVXYepgm0xO89pS8boBBMJfoOAMdx2ffoY6DfWMwAjAPRTfEXPeFjBn6fk3mAvlJdSe5YbgYJYs5906LAsP3D/orwMUlOnhNQBNDNEw9TxQdolCF83MHcYCAHTJ05fvezZalq8FRn8CRiNjM2lAUmOaBiN4QjOS8freT0uzZJAACaPvcE4coDMLFDAEmeWeeW21BsLJXx7qb3KEiCpWKOsxl46yNWTG/D1RKNZhbeSSirs+9xsGWIo51/NkTQsx+VLgKDRsgQstOaGCKAJLz6v1OaNJzA6BXTSRtXAuGKAGwnXst0ij/56ZZlzdATl/SBSOINOJz0S5lAKPcLi3985TsfPkBBrdVVMX+9fFUCDHdW212gdvTjn9t1t0t3dIvUBcgLEA18SgAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Group 444" href="#img1" transform="matrix(1,0,0,1,1,1)"/>
+</svg>

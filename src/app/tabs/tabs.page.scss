@@ -1,0 +1,75 @@
+ion-tab-bar {
+	overflow: visible;
+	--background: url(../../assets/images/tab_bg.svg) top center no-repeat;
+	--border: none;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 15px 15px 0 0;
+    backdrop-filter: blur(3px);
+	contain: layout;
+
+	ion-tab-button {
+		
+		&#tab-button-addproduct {
+			border-radius: 50%;
+			max-width: 60px;
+			max-height: 60px;
+			flex: 0 0 100%;
+			filter: drop-shadow(0px 10px 11.5px rgba(35,49,72,0.2));
+			background-color: #00c0c9;
+			position: relative;
+			margin: 0 4px;
+			margin-top: -42px;
+			--padding-bottom: 8px;
+			--padding-top: 8px;
+			--padding-start: 0;
+			--padding-end: 0;
+			color: #fff;
+
+			svg {
+				fill: #2e3d56;
+				stroke: #2e3d56;
+			}
+
+			&.tab-selected {
+				svg {
+					opacity: 1;
+					fill: #ffffff;
+					stroke: #ffffff;
+				}
+			}
+		}
+		ion-label {
+			font-size: 12px;
+			font-weight: 600;
+			margin-top: 8px;
+			line-height: 1;
+			color: rgba(255,255,255,0.5);
+		}
+		--color: #000;
+		--color-selected: #00C0C9;
+		--padding-bottom: 8px;
+		--padding-top: 8px;
+		background: transparent;
+
+		svg {
+			fill: rgba(255,255,255,0.5);
+			stroke: rgba(255,255,255,0.5);
+		}
+
+		&.tab-selected {
+			svg {
+				opacity: 1;
+				fill: #00C0C9;
+				stroke: #00C0C9;
+			}
+
+			ion-label {
+				color: #00C0C9;
+			}	
+		}
+	}	
+}

@@ -1,0 +1,297 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="edit()">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-button>
+      <ion-button (click)="deleteProduct(productDeatil._id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="edit"  (click)="edit()">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-button>
+      <ion-button class="delete" (click)="deleteProduct(productDeatil._id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="close" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <h6>Nick Name</h6>
+      </ion-col>
+      <ion-col size="8" class="ion-text-end">
+        <p>{{productDeatil?.name}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <div class="product_area">
+    <a class="slide_btn" (click)="swipePrev()" *ngIf='productDeatil.productImagesUrl.length>1'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </a>
+    <a class="slide_btn next" (click)="swipeNext()" *ngIf='productDeatil.productImagesUrl.length>1'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+    <div class="product_thumb_area">
+      <ion-slides *ngIf="productDeatil.productImagesUrl.length !=0" pager="false"  #prodSlider [options]="prodetailsslideOpts">
+        <ion-slide *ngFor="let product of productDeatil.productImagesUrl">
+          <div class="product_thumb">
+            <img (click)="showimage(product)" src="{{(product != '')? product : './assets/images/blank-image.png'}}">
+            <ion-button (click)="shareItem(product)">
+              <ion-icon name="share-social-outline" ></ion-icon>
+            </ion-button>
+          </div>
+        </ion-slide>
+      </ion-slides>
+      <div class="product_thumb" *ngIf="productDeatil.productImagesUrl.length==0">
+            <img src="{{'./assets/images/blank-image.png'}}">
+      </div>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngIf="productDeatil.brands">
+          <h6>Brand</h6>
+          <p>{{productDeatil?.brands}}</p>
+        </ion-col>
+        <ion-col size="6" *ngIf="productDeatil.brands">
+          <h6>Model No.</h6>
+          <p>{{productDeatil?.modelNo}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="progress">
+        <ion-col size="1"><h6>0</h6></ion-col>
+        <ion-col size="9">
+          <ion-progress-bar value="{{progressBarCount}}"></ion-progress-bar>
+        </ion-col>
+        <ion-col size="2" class="ion-text-end"><h6>{{this.progressCount}}%</h6></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="product_details_row">
+    <div class="product_details">
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col size="12">
+            <h5>Product Details</h5>
+          </ion-col>
+          <ion-col size="4" *ngIf="productDeatil.category">
+            <h6>Category</h6>
+          </ion-col>
+          <ion-col size="8" class="ion-text-end" *ngIf="productDeatil.category">
+            <p>{{productDeatil?.category}}</p>
+          </ion-col>
+          <ion-col size="4" *ngIf="productDeatil.subCategory">
+            <h6>Sub Category</h6>
+          </ion-col>
+          <ion-col size="8" class="ion-text-end" *ngIf="productDeatil.subCategory">
+            <p>{{productDeatil?.subCategory}}</p>
+          </ion-col>
+          <ion-col size="4" *ngIf="productDeatil.serialNo">
+            <h6>Serial No.</h6>
+          </ion-col>
+          <ion-col size="8" class="ion-text-end" *ngIf="productDeatil.serialNo">
+            <p>{{productDeatil?.serialNo}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="product_details_row" >
+    <div class="product_details">
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col size="12">
+            <h5>Warranty Details</h5>
+          </ion-col>
+          <ion-col size="4" (click)="showimage(productDeatil?.invoicePhotoUrl)">
+            <ion-slides pager="false" [options]="inoviceslideOpts" *ngIf="productDeatil.invoicePhotoUrl.length !=0">
+              <ion-slide *ngFor="let product of productDeatil.invoicePhotoUrl">
+                <div class="product_thumb">
+                  <img (click)="showimage(product)" src="{{(product != '')? product : './assets/images/blank-image.png'}}">
+                  <ion-button (click)="shareItem(product)">
+                    <ion-icon name="share-social-outline"></ion-icon>
+                  </ion-button>
+                </div>
+              </ion-slide>
+            </ion-slides>
+            <div class="product_thumb" *ngIf="productDeatil.invoicePhotoUrl.length ==0">
+              <img src="{{'./assets/images/blank-image.png'}}">
+            </div>
+          </ion-col>
+          <ion-col size="8">
+            <ion-row>
+              <ion-col size="6">
+                <h6>Validity</h6>
+                <p>{{(productDeatil ? productDeatil?.warrantyPeriod : '0')}} Months</p>
+              </ion-col>
+              <ion-col size="6">
+                <h6>Purchased Date</h6>
+                <ng-template [ngIf]="productDeatil.purchaseDate" [ngIfElse]="notPurchaseDateDetected">
+                  <p>{{productDeatil.purchaseDate | date:'dd MMM yyyy'}}</p>
+                </ng-template>
+                <ng-template #notPurchaseDateDetected>
+                  <p>N/A</p>
+                </ng-template>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="productDeatil.purchaseDate">
+              <ion-col size="6">
+                <h6>Validity Till</h6>
+                <p>{{warrantyValidTill | date: 'dd MMM yyyy'}}</p>
+              </ion-col>
+              <ion-col size="6" *ngIf="warrantyLeftDays>0">
+                <h6>Validity Days</h6>
+                <p>{{warrantyLeftDays}} days</p>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="product_details_row" *ngIf="productDeatil.extendedWarranty != null">
+    <!-- <div class="product_details" *ngIf="productDeatil.extendedWarranty.serviceProvider != ''"> -->
+      <div class="product_details">
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col size="12">
+            <h5>Extended Warranty</h5>
+          </ion-col>
+          <ion-col size="4" *ngIf="productDeatil.extendedWarranty.extendedWarrantyImages.length !=0">
+            <img src="./assets/images/blank-image.png">
+          </ion-col>
+          <ion-col size="8">
+            <ion-row>
+              <ion-col size="6" *ngIf="productDeatil?.extendedWarranty?.serviceProvider">
+                <h6>Service Provider</h6>
+                <h4>{{productDeatil?.extendedWarranty?.serviceProvider}}</h4>
+              </ion-col>
+              <ion-col size="6" *ngIf="productDeatil.extendedWarranty?.mobileNo" class="ion-text-end" (click)="call(productDeatil?.extendedWarranty?.mobileNo)">
+                <a class="call"><ion-icon name="call"></ion-icon></a>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="6">
+                <h6>Validity</h6>
+                <p *ngIf="productDeatil?.extendedWarranty?.noOfYears > 0 else ExtendedWarrantyNotAvailable">
+                  {{productDeatil?.extendedWarranty?.noOfYears}}
+                  <span *ngIf="productDeatil?.extendedWarranty?.noOfYears == 1 else greaterThanOneYear">Year</span>
+                  <ng-template #greaterThanOneYear>Years</ng-template>
+                </p>
+                <ng-template #ExtendedWarrantyNotAvailable>{{'N/A'}}</ng-template>
+             </ion-col>
+              <ion-col size="6" *ngIf="productDeatil?.extendedWarranty?.mobileNo">
+                <h6>Mobile No.</h6>
+                <p>{{productDeatil?.extendedWarranty?.mobileNo}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="product_details_row" *ngIf="productDeatil.amcDetails != null">
+    <div class="product_details" *ngIf="productDeatil.amcDetails.serviceProvider != ''">
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col size="12">
+            <h5>Annual maintenance ({{productDeatil?.amcDetails?.serviceDuration}})</h5>
+          </ion-col>
+          <ion-col size="4" *ngIf="productDeatil.amcDetails.amcImages.length">
+            <img src="./assets/images/blank-image.png">
+          </ion-col>
+          <ion-col size="8">
+            <ion-row>
+              <ion-col size="6" *ngIf="productDeatil?.amcDetails?.serviceProvider">
+                <h6>Service Provider</h6>
+                <h4>{{productDeatil?.amcDetails?.serviceProvider}}</h4>
+              </ion-col>
+              <ion-col size="6" *ngIf="productDeatil?.amcDetails?.mobileNo" (click)="call(productDeatil?.amcDetails?.mobileNo)" class="ion-text-end">
+                <a class="call"><ion-icon name="call"></ion-icon></a>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="6">
+                <h6>Valid Till</h6>
+                <p>{{amcValidTill | date: 'dd MMM yyyy'}}</p>
+                <p>{{(amcLeftDays == '')? 'N/A': amcLeftDays}} Days Left</p>
+              </ion-col>
+              <ion-col size="6" *ngIf="productDeatil?.amcDetails?.mobileNo">
+                <h6>Contact No.</h6>
+                <p>{{productDeatil?.amcDetails?.mobileNo}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  
+  <div class="ticlet_wrap" *ngFor="let ticket of tickets">
+      <h5>RAISED TICKETS FOR THIS PRODUCT</h5>
+
+    <div class="ticket_box" (click)="ticketDetails(ticket._id)">
+      <div class="ticket_box_top" >
+        <div class="product_image">
+          <img src="{{ticket?.products?.productImagesUrl[0] || './assets/images/blank-image.png'}}">
+        </div>
+        <div>
+          <h5>{{ticket?.products.name || 'N/A'}}</h5>
+          <ion-badge color="primary">{{ticket.status}}</ion-badge>
+        </div>
+      </div>
+      <div class="ticket_box_bottom">
+        <small>Your wevouch ticket no.</small>
+        <h4>{{ticket.uniqueId}}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="(user.remainingTicketCount > 0)">
+    <div class="ion-text-center">
+      <ion-button *ngIf="(newTickets.length === 0) && (ongoingTickets.length === 0)" (click)="productDetails(productDeatil._id)" >
+        <svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+          <path fill="#fff" stroke="#fff" stroke-width="0.2" id="Path 166" fill-rule="evenodd" class="shp0" d="M20.77 11.43C20.77 12.1 21.28 12.64 21.92 12.64C22.56 12.64 23.07 13.17 23.07 13.84L23.07 18.66C23.07 19.32 22.56 19.86 21.92 19.86L1.15 19.86C0.51 19.86 0 19.32 0 18.66L0 13.84C0 13.17 0.51 12.64 1.15 12.64C1.79 12.64 2.31 12.1 2.31 11.43C2.31 10.77 1.79 10.23 1.15 10.23C0.51 10.23 0 9.69 0 9.02L0 4.2C0 3.54 0.51 3 1.15 3L21.92 3C22.56 3 23.07 3.54 23.07 4.2L23.07 9.02C23.07 9.69 22.56 10.23 21.92 10.23C21.28 10.23 20.77 10.77 20.77 11.43ZM20.77 5.41L9.23 5.41C9.23 6.07 8.71 6.61 8.08 6.61C7.44 6.61 6.92 6.07 6.92 5.41L2.31 5.41L2.31 8.03C3.27 8.4 4.03 9.19 4.38 10.2C5.03 12.07 4.1 14.15 2.31 14.83L2.31 17.45L6.92 17.45C6.92 16.79 7.44 16.25 8.08 16.25C8.71 16.25 9.23 16.79 9.23 17.45L20.77 17.45L20.77 14.83C19.8 14.46 19.04 13.67 18.69 12.66C18.04 10.79 18.97 8.72 20.77 8.03L20.77 5.41ZM9.23 10.23L9.23 12.64C9.23 13.3 8.71 13.84 8.08 13.84C7.44 13.84 6.92 13.3 6.92 12.64L6.92 10.23C6.92 9.56 7.44 9.02 8.08 9.02C8.71 9.02 9.23 9.56 9.23 10.23Z" /></svg>
+          <span *ngIf="warrantyValidTill != '' && dateNow < warrantyValidTill else WarrantlyNotClaiming;">
+            Claim Warranty
+          </span>
+          <ng-template #WarrantlyNotClaiming>
+            <span>
+              Raise service Ticket
+            </span>
+          </ng-template>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="ion-text-center" *ngIf="(user.remainingTicketCount <= 0) && (newTickets.length === 0) && (ongoingTickets.length === 0)">
+    <ion-button class="claimWarrantyBTN">
+      Not enough ticket!
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true">
+   <div class="ion-header" (click)="goBack()">
+    <span class="back_button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </span>
+    <img src="../../assets/images/logo.png" class="logo text-center">
+    <span class="notification_button" (click)="openNotification()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+    </span>
+  </div>
+  <div class="ticlet_wrap">
+    <div class="ticket_box">
+      <div class="ticket_box_top">
+        <div class="product_image">
+          <img src="{{(ticketDetail.products && ticketDetail.products.productImagesUrl != '')? ticketDetail.products.productImagesUrl[0] : './assets/images/blank-image.png'}}">
+        </div>
+        <div>
+          <h5>{{(ticketDetail.products && ticketDetail.products.name) || 'N/A'}}</h5>
+          <div><a>{{ticketDetail?.transportationType}} Address</a></div>
+          <p>{{ticketDetail.address?.addressLine1}}, {{ticketDetail.address?.addressLine2}}, {{ticketDetail.address?.city}}, {{ticketDetail.address?.country}}, {{ticketDetail.address?.state}}, pin-{{ticketDetail.address?.pin}}</p>
+          <p class="details"><span>Issued On :</span> {{ticketDetail.createdAt | date:'dd MMM, yyyy'}}</p>
+          <p class="details"><span>Issue Details :</span> {{ticketDetail.issueType}}</p>
+          <p class="details"><span>Function Details : </span>{{ticketDetail.functionType}}</p>
+          <p class="details"><span>Description : </span>{{ticketDetail.description}}</p>
+          <p class="details"><span>Selected Date : </span>{{ticketDetail.selectedDate | date:'dd MMM, yyyy'}}</p>
+          <p class="details"><span *ngIf="ticketDetail.selectedTime">Selected Date :</span> {{ticketDetail.selectedTime | date:'HH:mm'}}hrs</p>
+        </div>
+      </div>
+      <div class="ticket_box_bottom">
+        <small>Your wevouch ticket no.</small>
+        <h4>{{ticketDetail.uniqueId}}</h4>
+      </div>
+    </div>
+  </div>
+
+  <ul class="log_list" *ngIf="ticketLogs.length > 0; else noLogsBlock;">
+    <li class="ongoing" *ngFor="let log of ticketLogs;let i=index;" class="event" [ngClass]="{'processDone' : i < (ticketLogs.length-1), 'processGoing' : i === (ticketLogs.length-1)}">
+      <span class="mile_stone"></span>
+      <p>({{log.createdAt | date:'dd MMM, yyyy'}})</p>
+      <div class="timeline_box">
+        <p>{{log.comment}}</p>
+      </div>
+    </li>
+  </ul>
+  <ng-template #noLogsBlock>
+      <h4 class="text-center mt-2 no-tickit">No logs yet!</h4>
+    </ng-template>
+</ion-content>

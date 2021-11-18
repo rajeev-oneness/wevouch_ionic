@@ -1,0 +1,56 @@
+<ion-content>
+	<img src="../../assets/images/logo.png" class="logo">
+
+	<div *ngIf="whichScreenToShow == 'loginScreen'">
+		<h4>Login</h4>
+
+		<div class="content_block">
+		<form #userLoginForm="ngForm" (ngSubmit)="loginUser(userLoginForm)">
+			<ion-item>
+				<ion-label position="stacked">Email</ion-label>
+				<ion-input #email="ngModel" ngModel type="email" autocomplete="email" name="email" placeholder="Your Email" required [ngClass]="{'is-invalid':email?.invalid && email?.touched}"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked">Password</ion-label>
+				<ion-input type="password" class="form-control" tabindex="2" #password="ngModel" ngModel type="password" name="password" placeholder="Password" required [ngClass]="{'is-invalid':password?.invalid && password?.touched}"></ion-input>
+			</ion-item>
+			<p class="ion-text-end" routerLink="/forgotpass"><a href="javascript:void(0);" >Forgot Password?</a></p>
+			<span class="text-danger">{{errorMessage}}</span>
+			<ion-button expand="block"color="ocean" type="submit" value="Login">Login</ion-button>
+		</form>
+		</div>
+		<div class="content_block">
+			<p class="ion-text-center connect_text"><span>or connect with</span></p>
+			<ul class="social_login">
+				<!-- <li><Img src="../../assets/images/google.png" /></li> -->
+				<li (click)="fbLogin()"><Img src="../../assets/images/facebook.png" /></li>
+				<li (click)="forgetPassword()"><Img src="../../assets/images/otp.png" /></li>
+			</ul>
+			<p class="ion-text-center">Don't have an account? <a routerLink="/register" routerDirection="root" class="signup">Sign up</a></p>
+		</div>
+	</div>
+
+	<div *ngIf="whichScreenToShow == 'otpScreen'">
+		<h4>Verify the OTP</h4>
+		<div class="content_block">
+			<ion-item>
+				<ion-text>Please enter OTP shared on your phone and email</ion-text>
+			</ion-item>
+			<ion-item>
+				<ion-label position="stacked">Mobile OTP</ion-label>
+				<ion-input type="text" [(ngModel)]="userOTP.mobile_otp" ></ion-input>
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="stacked">Email OTP</ion-label>
+				<ion-input type="text" [(ngModel)]="userOTP.email_otp" ></ion-input>
+			</ion-item>
+		</div>
+		<div class="content_block">
+			<ion-button expand="block" (click)="otpVerifyForTheUser()" color="ocean">verify</ion-button>
+		</div>
+	</div>
+
+
+</ion-content>

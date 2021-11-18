@@ -1,0 +1,107 @@
+<ion-content>
+	<div class="ion-header">
+		<span class="back_button" (click)="goBack()">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+		</span>
+		<img src="../../assets/images/logo.png" class="logo">
+		<span class="cross_button"></span>
+	</div>
+	<div *ngIf="whichScreenToShow == 'regiterScreen'">
+		<h4>Create an Account</h4>
+
+		<div class="content_block">
+			<!-- <ion-item>
+				<ion-label position="stacked" >Name</ion-label>
+				<ion-input type="text" [(ngModel)]="name" ></ion-input>
+			</ion-item> -->
+
+			<ion-item>
+				<ion-label position="stacked" >First Name</ion-label>
+				<ion-input type="text" [(ngModel)]="first_name"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="stacked" >Last Name</ion-label>
+				<ion-input type="text" [(ngModel)]="last_name" ></ion-input>
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="stacked">Mobile</ion-label>
+				<ion-input type="tel" maxlength='10' [(ngModel)]="mobile"></ion-input>
+			</ion-item>
+
+			<form [formGroup]="signupForm">
+				<ion-item [ngClass]="{'error': checkField('email')}">
+					<ion-label position="stacked" >Email</ion-label>
+					<ion-input type="email" [(ngModel)]="email" formControlName='email' [(ngModel)]='regData.email'></ion-input>
+				</ion-item>
+				<ion-item [ngClass]="{'error': checkField('password'), border: !checkField('password')}">
+					<ion-label position="stacked" >Password</ion-label>
+					<ion-input type="password" [(ngModel)]="password" type="password" formControlName="password" [type]="isPasswordVisible ? 'text' : 'password'" [(ngModel)]='regData.password' ></ion-input>
+				</ion-item>
+				<p class="password_text ion-text-center"><small>Use uppercase, lowercase and numbers for a stronger password(Min 7 char)</small></p>
+				<ion-item [ngClass]="{'error': checkField('cpassword'), border: !checkField('cpassword')}">
+					<ion-label position="stacked" >Confirm Password</ion-label>
+					<ion-input type="password" [(ngModel)]="cpassword" type="password" formControlName="cpassword" [(ngModel)]='regData.confirmPassword' placeholder="Confirm Password" clearOnEdit="false"></ion-input>
+				</ion-item>
+				<!-- <ion-item>
+					<ion-label position="stacked" >Age</ion-label>
+					<ion-input type="number" (ionChange)="changAge()" [(ngModel)]="age" formControlName='age' [(ngModel)]='regData.age'></ion-input>
+					<p *ngIf="msginputvalue">Age must be between 18 and 80</p>
+				</ion-item> -->
+			</form>
+			<!-- <ion-item>
+				<ion-label position="stacked" >Age</ion-label>
+				<ion-input type="number" (ionChange)="changAge()" [(ngModel)]="age" formControlName='age' [(ngModel)]='regData.age'></ion-input>
+				<p *ngIf="msginputvalue">Must be between {{min}} and {{max}}</p>
+			</ion-item> -->
+			
+			<ion-item>
+				<ion-label position="stacked" >Age</ion-label>
+				<ion-input type="tel" [(ngModel)]="age"(ionChange)="changAge()" maxlength="2" minlength="2"></ion-input>
+				<p *ngIf="msginputvalue">Age must be between 18 and 80</p>
+			</ion-item>
+			<ion-item>
+				<ion-label position="fixed">Choose Gender*</ion-label>
+				<ion-select interface="action-sheet" value="kolkata" [(ngModel)]='gender' multiple="false" (ionChange)="optionsgender();">
+					<ion-select-option *ngFor="let item of genderList" [value]="item.id" placeholder="Please select Gender" selected value="kolkata">{{item.text}}</ion-select-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label position="stacked" >Referral code (if any)</ion-label>
+				<ion-input type="text" [(ngModel)]="userReferralCode"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-checkbox [(ngModel)]="acceptance" name="acceptance"></ion-checkbox>
+				<ion-label>&nbsp;&nbsp; I have read and accepted the Terms & Conditions and Privacy Policy</ion-label>
+				<!-- <ion-label position="stacked">I agree with the terms & condition</ion-label> -->
+			</ion-item>
+		</div>
+		<div class="content_block">
+			<ion-button expand="block" (click)="signUpUser()" color="ocean" [disabled]="!signupForm.valid">Sign Up</ion-button>
+			<p class="ion-text-center">Already a member <a routerLink="/login" routerDirection="root" class="signup">Login here</a></p>
+		</div>
+	</div>
+
+	<div *ngIf="whichScreenToShow == 'otpScreen'">
+		<h4>Verify the OTP</h4>
+<!-- 		<p class="text-muted"></p>
+ -->		<div class="content_block">
+			<ion-item>
+				<ion-text>Please enter OTP shared on your phone and email</ion-text>
+			</ion-item>
+			<ion-item>
+				<ion-label position="stacked">Mobile OTP</ion-label>
+				<ion-input type="text" [(ngModel)]="userOTP.mobile_otp" ></ion-input>
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="stacked">Email OTP</ion-label>
+				<ion-input type="text" [(ngModel)]="userOTP.email_otp" ></ion-input>
+			</ion-item>
+		</div>
+		<div class="content_block">
+			<ion-button expand="block" (click)="otpVerifyForTheUser()" color="ocean">verify</ion-button>
+		</div>
+	</div>
+</ion-content>

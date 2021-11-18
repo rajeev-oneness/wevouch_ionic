@@ -1,0 +1,19 @@
+<ion-content>
+  <img src="../../assets/images/logo.png" class="logo">
+
+  <h4>Verify Mobile</h4>
+
+  <div class="content_block">
+    <ion-item>
+        <ion-label position="stacked">Enter 4 digit OTP sent to xxxxxx{{last4Digits}}</ion-label>
+        <ng-otp-input  (onInputChange)="onOtpChange($event)" type="tel" [config]="{length:4,allowNumbersOnly:true}"></ng-otp-input>
+    </ion-item>
+    <ion-button expand="block" (click)="submitOtp()" routerDirection="root" color="ocean">Submit</ion-button>
+  </div>
+  <div class="content_block">
+    
+    <p class="ion-text-center">Didn't receive the code? <a href="#" class="signup">Resend</a></p>
+  </div>
+
+
+</ion-content>

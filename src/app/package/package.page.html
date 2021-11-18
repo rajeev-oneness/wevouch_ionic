@@ -1,0 +1,87 @@
+<ion-content [fullscreen]="true">
+    <div class="ion-header" (click)="goBack()">
+    <span class="back_button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </span>
+    <img src="../../assets/images/logo.png" class="logo text-center">
+    <span class="notification_button" (click)="openNotification()">
+      <svg style="visibility: hidden;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+    </span>
+  </div>
+
+  <ion-slides class="package_slider" pager="false" [options]="packageslideOpts">
+    <ion-slide *ngFor="let package of packages" >
+      <div class="package_block">
+                      <h3>{{package.name}} <span *ngIf="package.amount == 0"> Plan!</span></h3>
+              <h1><span>&#8377;</span>{{package.amount}}/-</h1>
+              <P>The perfect plan for a hassle-free experience</P>
+              <ul>
+                <li *ngFor="let description of package.description"><i class="fa fa-check"></i>{{description}}</li>
+                <li><i class="fa fa-check"></i>{{package.ticketCount}} Tickets</li>
+              </ul>
+              <!-- <div *ngIf="package.amount == 0">
+                <span class="text-danger">Free Plan!</span>
+              </div> -->
+              <div *ngIf="userInfo.subscription._id === package._id">
+                <span class="text-danger">Activated Plan!</span>
+              </div>
+              <div *ngIf="(package.amount != 0) && (userInfo.subscription._id != package._id)">
+                <ion-button class="subscribe-btn" color="megenta" (click)="pay(package._id)">Subscribe Now</ion-button>
+              </div>
+      </div>
+    </ion-slide>
+    <!-- <ion-slide>
+      <div class="package_block">
+        <h3>Free</h3>
+        <h1>Rs. 0/-</h1>
+        <p>The perfect plan for a hassle-free experience</p>
+        <ul>
+          <li>DD PRODUCT: YES</li>
+          <li>ADD EXTENDED WARRANTY DETAILS: YES</li>
+          <li>ADD AMC DETAILS: YES</li>
+          <li>WARRANTY NOTIFICATION: YES</li>
+          <li>OTHER NOTIFICATION ( EX- WARRANTY/AMC): YES</li>
+          <li>INVOICE PICTURE: YES</li>
+          <li>PRODUCT PICTURE: YES</li>
+          <li>SERVICE CENTER INFORMATION: YES</li>
+          <li>DEDICATED HELPLONE: NO</li>
+          <li>VALIDITY FOR TKT: 60 DAYS</li>
+          <li>REFERRAL CODE</li>
+          <li>FOR EVERY REFERRAL ONE TKT EACH TO THE REFFERER AND REFFEREE (VALIDITY 60 DAYS)</li>
+          <li>PROMO CODE- DYNAMIC</li>
+          <li>ADD FIVE PRODUCTS GET ONE TKT FREE ( 60 DAYS VALIDITY)</li>
+          <li>ANY FREE OR PROMOTIONAL TKT WILL HAVE VALIDITY FOR 60 DAYS ONLY</li>
+          <li>5 Tickets</li>
+        </ul>
+        <ion-button expand="block" color="megenta">Subscribe Now</ion-button>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="package_block">
+        <h3>Free</h3>
+        <h1>Rs. 0/-</h1>
+        <p>The perfect plan for a hassle-free experience</p>
+        <ul>
+          <li>DD PRODUCT: YES</li>
+          <li>ADD EXTENDED WARRANTY DETAILS: YES</li>
+          <li>ADD AMC DETAILS: YES</li>
+          <li>WARRANTY NOTIFICATION: YES</li>
+          <li>OTHER NOTIFICATION ( EX- WARRANTY/AMC): YES</li>
+          <li>INVOICE PICTURE: YES</li>
+          <li>PRODUCT PICTURE: YES</li>
+          <li>SERVICE CENTER INFORMATION: YES</li>
+          <li>DEDICATED HELPLONE: NO</li>
+          <li>VALIDITY FOR TKT: 60 DAYS</li>
+          <li>REFERRAL CODE</li>
+          <li>FOR EVERY REFERRAL ONE TKT EACH TO THE REFFERER AND REFFEREE (VALIDITY 60 DAYS)</li>
+          <li>PROMO CODE- DYNAMIC</li>
+          <li>ADD FIVE PRODUCTS GET ONE TKT FREE ( 60 DAYS VALIDITY)</li>
+          <li>ANY FREE OR PROMOTIONAL TKT WILL HAVE VALIDITY FOR 60 DAYS ONLY</li>
+          <li>5 Tickets</li>
+        </ul>
+        <ion-button expand="block" color="megenta">Subscribe Now</ion-button>
+      </div>
+    </ion-slide> -->
+  </ion-slides>
+
+</ion-content>

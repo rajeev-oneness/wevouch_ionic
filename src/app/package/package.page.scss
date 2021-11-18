@@ -1,0 +1,112 @@
+ion-content {
+  --background: #2e3d56 url(../../assets/images/bg_curv.png) top center no-repeat;
+  --color: #fff;
+  --padding-bottom: 90px;
+
+  .ion-header {
+    display: flex;
+    padding: 0 30px;
+    margin: 65px auto 30px;
+    align-items:center;
+    justify-content: space-between;
+
+    .logo {
+      display: block;
+    }
+    .menu_button {
+      display: flex;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      background-color: #202c40;
+      align-items:center;
+      justify-content: center;
+
+      svg {
+        max-width: 20px;
+        max-height: 20px;
+      }
+    }
+    .notification_button {
+      display: flex;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      background-color: #202c40;
+      align-items:center;
+      justify-content: center;
+
+      svg {
+        max-width: 20px;
+        max-height: 20px;
+      } 
+    }
+  }
+
+  .package_slider {
+    padding-left: 25px;
+
+    .package_block {
+      padding: 36px;
+      background: #fff;
+      color: #000;
+      box-sizing: border-box;
+      border-radius: 10px;
+      text-align: left;
+
+      h3 {
+        font-size: 20px;
+        color: #00C0C9;
+        font-weight: 500;
+        text-transform: uppercase;
+        text-align: left;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+      }
+      h1 {
+        font-size: 40px;
+        font-weight: 500;
+        color: #2e3d56;
+        margin: 0;
+      }
+      p {
+        text-align: left;
+        font-size: 13px;
+        color: #8e93bc;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+
+      ul {
+        margin: 0 0 20px;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+          display: flex;
+          font-size: 14px;
+          text-align: left;
+          margin-bottom: 10px;
+          color: #2e3d56;
+
+          &:before {
+            max-width: 16px;
+            max-height: 16px;
+            flex: 0 0 16px;
+            background: url(../../assets/icon/check.svg) center no-repeat;
+            background-size: contain;
+            display: block;
+            content: '';
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .button {
+        filter: drop-shadow(0px 20px 11.5px rgba(35,49,72,0.3));
+        text-transform: none;
+        letter-spacing: 0;
+      }
+    }
+  }
+}

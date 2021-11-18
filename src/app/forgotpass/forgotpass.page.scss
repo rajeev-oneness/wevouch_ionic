@@ -1,0 +1,104 @@
+ion-content {
+	--background: #2e3d56 url(../../assets/images/bg_curv.png) top center no-repeat;
+	--color: #fff;
+
+	.logo {
+		display: block;
+		margin: 65px auto;
+	}
+	.content_block {
+		display: block;
+		padding: 0;
+		max-width: 300px;
+		margin: 0 auto;
+
+		ion-item {
+			--background: transparent;
+			--padding-start: 0;
+			--inner-padding-end: 0;
+			--color: #fff;
+			--inner-border-width: 0;
+			margin-bottom: 22px;
+			--border-width: 0;
+
+			ion-label {
+				font-size: 15px;
+				--color: #f2f3f7;
+				font-weight: 400;
+				margin: 0 0 10px;
+				transform: none;
+				opacity: 0.5;
+			}
+
+			ion-input {
+				--background: #202c40;
+				border-radius: 10px;
+				--padding-start: 15px;
+				--padding-end: 15px;
+				--padding-top: 15px;
+				--padding-bottom: 15px;
+				line-height: 20px;
+			}
+
+			&:last-child {
+				margin-bottom: 10px;
+			}
+		}
+	}
+	h4 {
+		margin: 0 0 54px;
+		color: #8c94a4;
+		text-align: center;
+		font-weight: 500;
+		font-size: 16px;
+	}
+	a {
+		color: #fff;
+	}
+	p {
+		span {
+			display: inline-block;
+			position: relative;
+
+			&:before {
+				display: inline-block;
+				vertical-align: middle;
+				width: 40px;
+				height: 1px;
+				background: #414f66;
+				content: '';
+				margin-right: 15px;
+			}
+			&:after {
+				display: inline-block;
+				vertical-align: middle;
+				width: 40px;
+				height: 1px;
+				background: #414f66;
+				content: '';
+				margin-left: 15px;
+			}
+		}
+		a.signup {
+			color: #00C0C9;
+		}
+	}
+	.connect_text {
+		margin-top: 100px;
+	}
+	.social_login {
+		margin: 24px 0 70px;
+		padding: 0;
+		list-style-type: none;
+		text-align: center;
+		font-size: 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		li {
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+}

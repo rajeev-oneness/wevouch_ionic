@@ -1,0 +1,7 @@
+{
+  "name": "wevouch",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
