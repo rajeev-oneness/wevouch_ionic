@@ -24,7 +24,6 @@ regData: any = {
   email: '',
   password: '',
   cpassword: '',
-  age:''
 };
 name='';
 first_name : '';
@@ -45,7 +44,6 @@ confirmPasswordType: string = "password";
  passwordType: string = 'password';
  passwordIcon: string = 'eye-off';
 isConfPasswordVisible=false;
-msginputvalue = false;
 constructor(private _api:ApiService,
   private _router:Router,
   public loadingController: LoadingController,
@@ -73,12 +71,7 @@ constructor(private _api:ApiService,
               ConfirmPasswordValidator.equalto("password")
           ])
       ],
-      age:[
-        '',
-          Validators.compose([
-            Validators.required, Validators.maxLength(2)
-          ])
-      ]
+
 
   });
   }
@@ -90,13 +83,6 @@ constructor(private _api:ApiService,
         this.navCtrl.back();
     }
     private whichScreenToShow = 'regiterScreen';
-    changAge(){
-      console.log(this.age);
-      if (this.age < '18' || this.age>'80' )
-        this.msginputvalue = true;
-      else
-        this.msginputvalue = false;
-    }
     signUpUser(){
 
 if (this.first_name == "") {
@@ -145,7 +131,7 @@ if (this.first_name == "") {
             this.hideLoader();
           },
           err => {
-            this.helper.showErrorCustom("Something Went wrong.") ;
+            this.helper.showErrorCustom(err?.message) ;
             this.hideLoader();
           }
         )
