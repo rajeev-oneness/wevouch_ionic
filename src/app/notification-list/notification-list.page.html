@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>notification-list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let notification of notificationList" >
+        <!-- New Notification Section -->
+        <ion-label *ngIf="notification.status else oldNotification" (click)="markingNotificationAsRead(notification._id)" class="newNotification">
+          <h6>{{notification.title}} <span>{{notification.createdDate| date:'d/M/yyyy'}}</span></h6>
+          <p>{{notification.description}}</p>
+        </ion-label>
+        <!-- old Notifiaction Section -->
+        <ng-template #oldNotification>
+          <ion-label class="notificationViewd">
+            <h6>{{notification.title}}  {{notification.createdDate| date:'dd MMM yyyy'}}</h6>
+            <p>{{notification.description}}</p>
+          </ion-label>
+        </ng-template>
+      </ion-item>
+    </ion-list>
+    <ion-footer>
+      <ion-toolbar>
+        <p><a href="javascript:void(0)" (click)="markingNotificationAsRead()">Mark all as read</a></p>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-content>

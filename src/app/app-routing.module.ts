@@ -119,6 +119,10 @@ const routes: Routes = [
     path: 'change-password',
     loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
+  {
+    path: 'notification-list',
+    loadChildren: () => import('./notification-list/notification-list.module').then( m => m.NotificationListPageModule)
+  },
 ];
 
 @NgModule({

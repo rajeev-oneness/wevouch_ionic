@@ -76,9 +76,6 @@ export class MenuPage implements OnInit {
               if (res[index].cleared == false) {
                 array.push(res[index]);
               }
-              // else{
-              //   array= Array();
-              // }
             }
             this.getNotificationData(array);
           }, err => {}
@@ -89,12 +86,15 @@ export class MenuPage implements OnInit {
 
   getNotificationData(array)
   {
-    this.notificationList = array;
-    console.log('ntificatin',this.notificationList);
-    
     this.newNotificationCount =  array.filter(function(item) {
       return item.status == true;
     })?.length;
+    // this.notificationList = array;
+    this.notificationList = array.slice(0, 3);
+  }
+
+  allNotification(){
+    this._router.navigate(['/notification-list']);
   }
 
   // Marking as a Read or Unread
