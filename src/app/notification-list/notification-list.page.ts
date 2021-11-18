@@ -20,6 +20,7 @@ export class NotificationListPage implements OnInit {
   }
 
   getNotifications() {
+
     if(this.userInfo?._id) {
         this._api.notificationList(this.userInfo._id).subscribe(
           res => {
